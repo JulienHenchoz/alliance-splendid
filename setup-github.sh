@@ -39,7 +39,7 @@ if gh repo view "$SLUG" >/dev/null 2>&1; then
   git remote get-url origin >/dev/null 2>&1 \
     || git remote add origin "https://github.com/$SLUG.git"
 else
-  info "Création de $SLUG…"
+  info "Création de ${SLUG}…"
   gh repo create "$REPO_NAME" $VISIBILITY \
     --source=. --remote=origin \
     --description "Suivi quotidien des ventes — Les Doublages improvisés au Théâtre du Splendid"
@@ -49,7 +49,7 @@ fi
 # --- 2. pousser --------------------------------------------------------------
 
 BRANCH="$(git branch --show-current)"
-info "Push de la branche $BRANCH…"
+info "Push de la branche ${BRANCH}…"
 git push -u origin "$BRANCH"
 ok "Code poussé."
 
