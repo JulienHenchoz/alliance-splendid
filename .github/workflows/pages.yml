@@ -6,6 +6,13 @@ on:
     paths:
       - "docs/**"
       - ".github/workflows/pages.yml"
+  # Indispensable : le commit quotidien de la collecte est poussé avec le
+  # GITHUB_TOKEN par défaut, et GitHub NE déclenche PAS d'événement `push`
+  # pour ces commits-là. Sans ce `workflow_run`, les données seraient bien
+  # committées chaque matin mais le site publié resterait figé.
+  workflow_run:
+    workflows: ["Collecte quotidienne des ventes"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -21,6 +28,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Ne pas republier si la collecte a échoué : mieux vaut des données de la
+    # veille qu'un site reconstruit sur un relevé incomplet.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

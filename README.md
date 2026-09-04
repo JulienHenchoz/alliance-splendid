@@ -179,7 +179,34 @@ Settings → Pages (typiquement `https://<org>.github.io/alliance-splendid/`).
 > privé : dépôt privé + Pages en accès restreint (plans Team/Enterprise), ou
 > consultez simplement `docs/index.html` en local.
 
-### 3.4 Vérifier
+### 3.4 Comment l'automatisation se déclenche
+
+| Workflow | Déclencheur | Effet |
+|---|---|---|
+| Collecte quotidienne des ventes | `cron: 37 6 * * *` (UTC) + relance manuelle | Relève les 14 séances et committe le snapshot |
+| Publier le dashboard | fin de la collecte, ou tout push touchant `docs/` | Reconstruit et publie le site |
+
+Trois points qui font échouer silencieusement ce genre de montage, et qui sont
+traités ici :
+
+1. **Un workflow planifié ne démarre que si son fichier est sur la branche par
+   défaut**, et sa première exécution a lieu au prochain créneau — jamais au
+   moment du push. Pour l'enregistrer et le vérifier tout de suite :
+   `gh workflow run collect.yml` (ou Actions → Run workflow).
+2. **Un commit poussé par un workflow avec le `GITHUB_TOKEN` par défaut ne
+   déclenche aucun autre workflow.** Le commit quotidien ne produit donc pas
+   d'événement `push` : la publication est câblée sur `workflow_run` (fin de la
+   collecte). Sans ça, les données seraient à jour dans le dépôt mais le site
+   publié resterait figé sur le premier relevé.
+3. **Les planifications à la minute 0 sont les plus retardées** — GitHub met en
+   file d'attente et peut abandonner un créneau en période de pointe. D'où
+   `37 6 * * *` plutôt que `0 6 * * *`. Un décalage de quelques dizaines de
+   minutes reste normal et sans conséquence pour un relevé quotidien.
+
+Rappel : GitHub **désactive** les workflows planifiés après 60 jours sans
+activité sur le dépôt. Le commit quotidien — y compris à vide — l'évite.
+
+### 3.5 Vérifier
 
 Onglet **Actions → Collecte quotidienne des ventes → Run workflow**. Le run doit
 afficher les 14 séances et leur nombre de places, puis committer.
