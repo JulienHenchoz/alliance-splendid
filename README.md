@@ -79,6 +79,7 @@ Deux modes, cumulables :
 .github/workflows/
   collect.yml        # cron quotidien : relève + commit du snapshot
   pages.yml          # publie docs/ sur GitHub Pages à chaque push
+setup-github.sh      # crée le dépôt, pousse, configure Actions + Pages
 src/
   collect.ts         # le collecteur (Node 22 + TypeScript, via tsx)
   types.ts           # schéma des données, commenté
@@ -121,6 +122,22 @@ largement, SQLite n'apporterait rien ici.
 ---
 
 ## 3. Déploiement
+
+### Voie rapide — un seul script
+
+```bash
+brew install gh && gh auth login     # une fois, si ce n'est pas déjà fait
+./setup-github.sh                    # ou : ./setup-github.sh <nom-du-depot>
+```
+
+Le script crée le dépôt **public** `alliance-splendid` sous votre compte, pousse
+la branche `main`, applique les deux réglages faciles à oublier (workflows en
+écriture, Pages en source *GitHub Actions*), puis déclenche un premier relevé.
+Il est **rejouable** : si le dépôt existe déjà, il le réutilise au lieu d'échouer.
+Pour un dépôt privé, remplacez `--public` par `--private` en tête du script —
+attention, Pages sur dépôt privé exige un plan Team/Enterprise.
+
+Les sections suivantes détaillent ce que le script fait, si vous préférez à la main.
 
 ### 3.1 Pousser le dépôt
 
