@@ -130,6 +130,23 @@ tbody tr.grand td { font-weight: 700; border-top: 2px solid var(--border); borde
 .badge.quasi svg    { color: var(--warning); }
 .badge.complet svg  { color: var(--critical); }
 
+/* ---- lien billetterie ---- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+td.book { width: 1%; padding-left: 4px; }
+a.book {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 6px;
+  color: var(--text-muted); border: 1px solid transparent;
+  transition: color .12s, background .12s, border-color .12s;
+}
+a.book:hover, a.book:focus-visible {
+  color: var(--series-1); background: var(--surface-0); border-color: var(--border);
+}
+a.book svg { width: 16px; height: 16px; }
+
 /* ---- contrôles ---- */
 .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
 .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
@@ -151,6 +168,86 @@ select {
 }
 /* `display:flex` ci-dessus l'emporterait sur la feuille de style du navigateur : on rétablit. */
 .chartfallback[hidden] { display: none; }
+/* =========================================================================
+   Vue mobile : le tableau devient une liste de cartes.
+   Un tableau à 7 colonnes ne tient pas sur un téléphone — le scroll
+   horizontal masquait les colonnes qui portent l'information utile.
+   Même DOM, même données : seule la mise en forme change.
+   ========================================================================= */
+@media (max-width: 640px) {
+  .tablewrap { overflow-x: visible; }
+  #table, #table tbody, #table tr, #table td { display: block; width: auto; }
+  #table thead { display: none; }
+  #table td { border: 0; padding: 0; text-align: left; white-space: normal; }
+
+  /* En-tête de soirée : le sous-total, en bandeau. */
+  #table tr.subtotal {
+    margin: 22px 0 10px;
+    padding: 0 0 8px;
+    background: none;
+    border-bottom: 1px solid var(--border);
+  }
+  #table tr.subtotal td { background: none; }
+  #table tr.subtotal td:first-child { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  #table tr.subtotal td[data-label] {
+    display: inline; font-size: 13px; font-weight: 400; color: var(--text-secondary);
+  }
+  #table tr.subtotal td[data-label]::before { content: attr(data-label) " "; }
+  /* Séparateur porté par l'élément suivant : pas de « · » orphelin en fin de ligne. */
+  #table tr.subtotal td[data-label] ~ td[data-label]::before { content: " · " attr(data-label) " "; }
+  #table tr.subtotal td.fill, #table tr.subtotal td.stat, #table tr.subtotal td.book { display: none; }
+
+  /* Une séance = une carte. */
+  #table tr.session {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px 12px;
+    align-items: center;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  #table tr.session td:first-child {
+    grid-column: 1 / 3; padding-left: 0;
+    font-size: 15px; font-weight: 600; color: var(--text-primary);
+  }
+  #table tr.session td.book { grid-column: 3; grid-row: 1; justify-self: end; }
+  #table tr.session td[data-label] { font-size: 15px; font-weight: 600; }
+  #table tr.session td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--text-secondary);
+    margin-bottom: 1px;
+  }
+  #table tr.session td.fill { grid-column: 1 / 4; font-weight: 400; }
+  #table tr.session td.fill .bar { width: calc(100% - 56px); max-width: none; }
+  #table tr.session td.stat { grid-column: 1 / 4; }
+
+  /* Total de la série : une carte pleine, détachée. */
+  #table tr.grand {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+    margin-top: 22px; padding: 14px;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: color-mix(in srgb, var(--surface-0) 70%, transparent);
+  }
+  #table tr.grand td:first-child { grid-column: 1 / 3; font-size: 15px; }
+  #table tr.grand td[data-label] { font-size: 17px; }
+  #table tr.grand td[data-label]::before {
+    content: attr(data-label);
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--text-secondary);
+  }
+  #table tr.grand td.fill { grid-column: 1 / 3; }
+  #table tr.grand td.fill .bar { width: calc(100% - 56px); }
+  #table tr.grand td.stat, #table tr.grand td.book { display: none; }
+
+  .card { padding: 16px 14px; }
+  .chartbox { height: 300px; }
+}
+
 footer.page { color: var(--text-muted); font-size: 12px; margin-top: 8px; }
 footer.page a { color: var(--text-secondary); }
 .err { color: var(--critical); font-weight: 600; }
@@ -181,6 +278,7 @@ footer.page a { color: var(--text-secondary); }
         <th scope="col">Jauge</th>
         <th scope="col">Remplissage</th>
         <th scope="col">Statut</th>
+        <th scope="col"><span class="sr-only">Billetterie</span></th>
       </tr></thead>
       <tbody></tbody>
     </table></div>
@@ -200,7 +298,7 @@ footer.page a { color: var(--text-secondary); }
     <div class="chartbox">
       <canvas id="chart"></canvas>
       <p id="chartFallback" class="chartfallback" hidden>
-        Graphique indisponible : la bibliothèque Chart.js n'a pas pu être chargée depuis le CDN.
+        Graphique indisponible : <code>vendor/chart.umd.js</code> n'a pas pu être chargé.
         Les chiffres du tableau ci-dessus restent à jour.
       </p>
     </div>
@@ -212,7 +310,8 @@ footer.page a { color: var(--text-secondary); }
   </footer>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.6/chart.umd.min.js"></script>
+<!-- Chart.js 4.4.6 (MIT) embarqué : pas de CDN, donc rien à charger depuis l'extérieur. -->
+<script src="./vendor/chart.umd.js"></script>
 <script>
 (function () {
   "use strict";
@@ -240,6 +339,14 @@ footer.page a { color: var(--text-secondary); }
       dateStyle: "long", timeStyle: "short", timeZone: "Europe/Paris"
     });
   }
+
+  /* Billet : rectangle arrondi + perforation en pointillé. Les encoches
+     latérales, testées d'abord, se lisaient comme un nœud papillon à 15 px. */
+  var TICKET =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="2.6" y="6" width="18.8" height="12" rx="2.4"/>' +
+    '<path d="M16 6.6v1.8M16 11.1v1.8M16 15.6v1.8"/></svg>';
 
   var ICONS = {
     ok:      '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg>',
@@ -276,15 +383,18 @@ footer.page a { color: var(--text-secondary); }
 
   function build(history) {
     var last = history.snapshots[history.snapshots.length - 1];
-    var caps = {};
-    history.sessions.forEach(function (s) { caps[s.id] = capacityFor(history, s.id); });
+    var caps = {}, urls = {};
+    history.sessions.forEach(function (s) {
+      caps[s.id] = capacityFor(history, s.id);
+      urls[s.id] = s.url;
+    });
 
     var rows = last.readings.map(function (r) {
       var cap = caps[r.id] || { value: history.defaultCapacity || 0, perSession: false };
       var sold = Math.max(0, cap.value - r.free);
       return {
         id: r.id, date: r.date, hour: r.hour, free: r.free,
-        capacity: cap.value, sold: sold,
+        url: urls[r.id], capacity: cap.value, sold: sold,
         // Plus de places libres que la jauge : c'est la jauge qui est fausse.
         overCapacity: r.free > cap.value,
         fillRate: cap.value > 0 ? (sold / cap.value) * 100 : 0
@@ -352,14 +462,22 @@ footer.page a { color: var(--text-secondary); }
     });
   }
 
-  function cell(r) {
+  function cell(r, label) {
     var st = statusOf(r.free, r.fillRate);
     var pct = r.fillRate.toFixed(0);
-    return "<td>" + nf.format(r.sold) + "</td>" +
-           "<td>" + nf.format(r.free) + "</td>" +
-           "<td>" + nf.format(r.capacity) + "</td>" +
-           '<td><span class="bar"><i style="width:' + Math.min(100, r.fillRate) + '%"></i></span>' + pct + "&nbsp;%</td>" +
-           '<td><span class="badge ' + st.key + '">' + ICONS[st.key] + st.label + "</span></td>";
+    // Colonne billetterie : seulement sur les lignes qui désignent une séance.
+    var book = r.url
+      ? '<a class="book" href="' + r.url + '" target="_blank" rel="noopener noreferrer"' +
+        ' title="Ouvrir la billetterie — ' + label + '"' +
+        ' aria-label="Ouvrir la billetterie pour ' + label + '">' + TICKET + "</a>"
+      : "";
+    return '<td data-label="Vendues">' + nf.format(r.sold) + "</td>" +
+           '<td data-label="Libres">' + nf.format(r.free) + "</td>" +
+           '<td data-label="Jauge">' + nf.format(r.capacity) + "</td>" +
+           '<td data-label="Remplissage" class="fill"><span class="bar"><i style="width:' +
+             Math.min(100, r.fillRate) + '%"></i></span>' + pct + "&nbsp;%</td>" +
+           '<td class="stat"><span class="badge ' + st.key + '">' + ICONS[st.key] + st.label + "</span></td>" +
+           '<td class="book">' + book + "</td>";
   }
 
   function renderTable(model) {
@@ -368,16 +486,17 @@ footer.page a { color: var(--text-secondary); }
     model.evenings.forEach(function (e, i) {
       var color = css(SERIES[i % SERIES.length]);
       var sub = el("tr", { class: "subtotal" });
-      sub.innerHTML = '<td><span class="swatch" style="background:' + color + '"></span>' + fmtDate(e.date) + "</td>" + cell(e);
+      sub.innerHTML = '<td><span class="swatch" style="background:' + color + '"></span>' + fmtDate(e.date) + "</td>" + cell(e, "");
       tb.appendChild(sub);
       e.rows.forEach(function (r) {
         var tr = el("tr", { class: "session" });
-        tr.innerHTML = "<td>" + r.hour.replace(":", "h") + "</td>" + cell(r);
+        var label = fmtDate(r.date) + " à " + r.hour.replace(":", "h");
+        tr.innerHTML = "<td>" + r.hour.replace(":", "h") + "</td>" + cell(r, label);
         tb.appendChild(tr);
       });
     });
     var grand = el("tr", { class: "grand" });
-    grand.innerHTML = "<td>Total série — 14 représentations</td>" + cell(model.total);
+    grand.innerHTML = "<td>Total série — 14 représentations</td>" + cell(model.total, "");
     tb.appendChild(grand);
   }
 
@@ -425,8 +544,8 @@ footer.page a { color: var(--text-secondary); }
   }
 
   function renderChart(history, model, view, eveningDate) {
-    // Le graphique est un plus : si le CDN Chart.js est injoignable, le tableau
-    // et les totaux doivent rester affichés.
+    // Le graphique est un plus : si Chart.js manque à l'appel, le tableau et
+    // les totaux doivent rester affichés.
     if (typeof Chart === "undefined") {
       document.getElementById("chart").hidden = true;
       document.getElementById("chartFallback").hidden = false;

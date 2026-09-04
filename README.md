@@ -95,7 +95,9 @@ src/
   collect.ts         # le collecteur (Node 22 + TypeScript, via tsx)
   types.ts           # schéma des données, commenté
 docs/                # racine du site publié
-  index.html         # dashboard (table + Chart.js), aucun build
+  index.html         # dashboard (tableau + Chart.js), aucun build
+  vendor/
+    chart.umd.js     # Chart.js 4.4.6 (MIT), embarqué — aucun CDN
   data/
     history.json     # ← la source de vérité : tous les snapshots
     latest.json      # vue dérivée du dernier relevé (confort / usage tiers)
@@ -255,6 +257,17 @@ Les messages sont explicites :
 
 ## 5. Le dashboard
 
+- **Aucune dépendance externe** — Chart.js est versionné dans `docs/vendor/`.
+  Le site ne charge rien depuis un CDN : rien à casser le jour où une URL change
+  (c'est précisément ce qui est arrivé avec `cdnjs/Chart.js/4.4.6`, absent de
+  cdnjs, d'où un graphique manquant en production). Pour changer de version :
+  `npm i chart.js@<version>` puis copier `node_modules/chart.js/dist/chart.umd.js`
+  dans `docs/vendor/`.
+- **Lien billetterie** — chaque ligne de séance porte une icône de billet qui
+  ouvre sa page de réservation Tick&Live dans un nouvel onglet.
+- **Mobile** — sous 640 px, le tableau devient une liste de cartes : une par
+  séance, groupées par soirée. Plus de défilement horizontal. Le rendu desktop
+  est inchangé.
 - **Vue d'ensemble** — les 14 représentations : vendues / libres / jauge /
   % de remplissage, avec sous-total par soirée (19h + 21h) et total sur la série.
   Statut par séance : *Disponible*, *Quasi complet* (≥ 90 %), *Complet* (0 place),
