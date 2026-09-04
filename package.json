@@ -1,0 +1,18 @@
+{
+  "name": "alliance-splendid-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Suivi quotidien des ventes de « Les Doublages improvisés » au Théâtre du Splendid (billetterie Tick&Live).",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "collect": "tsx src/collect.ts",
+    "collect:dry": "tsx src/collect.ts --dry-run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

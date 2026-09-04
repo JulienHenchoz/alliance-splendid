@@ -1,0 +1,53 @@
+name: Collecte quotidienne des ventes
+
+on:
+  schedule:
+    # 06:00 UTC ≈ 08:00 Paris (heure d'été) / 07:00 Paris (heure d'hiver).
+    # GitHub peut décaler le déclenchement de plusieurs dizaines de minutes
+    # en période de forte charge : ce n'est pas un problème ici.
+    - cron: "0 6 * * *"
+  # Relance manuelle depuis l'onglet Actions.
+  workflow_dispatch:
+
+# Un seul run à la fois : évite deux commits concurrents sur data/.
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Relever les disponibilités
+        run: npm run collect
+
+      - name: Committer le snapshot
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/history.json docs/data/latest.json
+          if git diff --staged --quiet; then
+            echo "Aucun changement de données — commit à vide pour garder le dépôt actif."
+            git commit --allow-empty -m "chore(data): relevé du $(date -u +%Y-%m-%d) (inchangé)"
+          else
+            git commit -m "chore(data): relevé du $(date -u +%Y-%m-%d)"
+          fi
+          git push

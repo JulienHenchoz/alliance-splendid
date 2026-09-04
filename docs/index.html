@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Les Doublages improvisés — suivi des ventes</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-0: #f4f3f0;
+  --surface-1: #fcfcfb;
+  --border:    #e3e2dd;
+  --grid:      #eceae5;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #7b7a76;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --good:     #0ca30c;
+  --warning:  #fab219;
+  --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-0: #111110;
+    --surface-1: #1a1a19;
+    --border:    #33332f;
+    --grid:      #2b2b28;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #8e8d84;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #111110;
+  --surface-1: #1a1a19;
+  --border:    #33332f;
+  --grid:      #2b2b28;
+  --text-primary:   #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #8e8d84;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
+
+header.page { margin-bottom: 28px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; }
+.sub { color: var(--text-secondary); font-size: 14px; margin: 0; }
+.updated { color: var(--text-muted); font-size: 13px; margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); display: inline-block; }
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+h2 { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.005em; }
+.caption { color: var(--text-secondary); font-size: 13px; margin: 0 0 18px; }
+
+/* ---- bandeau d'avertissement jauge ---- */
+.notice {
+  display: flex; gap: 10px; align-items: flex-start;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--warning);
+  background: var(--surface-1);
+  border-radius: 8px; padding: 12px 14px; margin-bottom: 20px;
+  font-size: 13px; color: var(--text-secondary);
+}
+.notice strong { color: var(--text-primary); font-weight: 600; }
+.notice code { font-size: 12px; background: var(--surface-0); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--border); }
+
+/* ---- tuiles ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+.tile .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; }
+.tile .value { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.tile .foot { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* ---- tableau ---- */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 9px 12px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 600; border-bottom: 1px solid var(--border); }
+tbody tr.session td:first-child { padding-left: 26px; color: var(--text-secondary); }
+tbody tr.subtotal td { font-weight: 600; background: color-mix(in srgb, var(--surface-0) 60%, transparent); }
+tbody tr.grand td { font-weight: 700; border-top: 2px solid var(--border); border-bottom: none; font-size: 15px; }
+.swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 8px; vertical-align: 0px; }
+
+/* ---- barre de remplissage dans le tableau ---- */
+.bar { display: inline-block; width: 74px; height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; vertical-align: middle; margin-right: 8px; }
+.bar > i { display: block; height: 100%; border-radius: 3px; background: var(--series-1); }
+
+/* ---- badges de statut (icône + texte, jamais la couleur seule) ---- */
+.badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+.badge svg { width: 12px; height: 12px; flex: none; }
+.badge.ok svg       { color: var(--good); }
+.badge.quasi svg    { color: var(--warning); }
+.badge.complet svg  { color: var(--critical); }
+
+/* ---- contrôles ---- */
+.controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: 13px; padding: 6px 12px; border: 0; cursor: pointer;
+  background: var(--surface-1); color: var(--text-secondary);
+}
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-1); }
+select {
+  font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+}
+.chartbox { position: relative; height: 340px; }
+
+.chartfallback {
+  position: absolute; inset: 0; margin: 0; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 24px; color: var(--text-secondary); font-size: 13px;
+}
+/* `display:flex` ci-dessus l'emporterait sur la feuille de style du navigateur : on rétablit. */
+.chartfallback[hidden] { display: none; }
+footer.page { color: var(--text-muted); font-size: 12px; margin-top: 8px; }
+footer.page a { color: var(--text-secondary); }
+.err { color: var(--critical); font-weight: 600; }
+@media (max-width: 560px) { h1 { font-size: 21px; } .tile .value { font-size: 25px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <h1>Les Doublages improvisés</h1>
+    <p class="sub">Cie Alliance Créative · Théâtre du Splendid, 48 rue du Faubourg Saint-Martin, 75010 Paris</p>
+    <p class="updated"><span class="dot" aria-hidden="true"></span><span id="updated">Chargement…</span></p>
+  </header>
+
+  <div id="notice" hidden></div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section class="card">
+    <h2>Vue d'ensemble par représentation</h2>
+    <p class="caption">Sous-totaux par soirée (19h + 21h) et total sur la série.</p>
+    <div class="tablewrap"><table id="table">
+      <thead><tr>
+        <th scope="col">Représentation</th>
+        <th scope="col">Vendues</th>
+        <th scope="col">Libres</th>
+        <th scope="col">Jauge</th>
+        <th scope="col">Remplissage</th>
+        <th scope="col">Statut</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Évolution dans le temps</h2>
+    <p class="caption" id="chartCaption">Places encore disponibles, relevées une fois par jour.</p>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Granularité du graphique">
+        <button type="button" data-view="total" aria-pressed="true">Total série</button>
+        <button type="button" data-view="soir" aria-pressed="false">Par soirée</button>
+        <button type="button" data-view="seance" aria-pressed="false">Une soirée</button>
+      </div>
+      <select id="soirPicker" hidden aria-label="Choisir la soirée"></select>
+    </div>
+    <div class="chartbox">
+      <canvas id="chart"></canvas>
+      <p id="chartFallback" class="chartfallback" hidden>
+        Graphique indisponible : la bibliothèque Chart.js n'a pas pu être chargée depuis le CDN.
+        Les chiffres du tableau ci-dessus restent à jour.
+      </p>
+    </div>
+  </section>
+
+  <footer class="page">
+    Source : <a href="https://billetterie-lesplendid.tickandlive.com/evenement/les-doublages-improvises" rel="noreferrer">billetterie Tick&amp;Live</a>.
+    Un siège momentanément réservé dans le panier d'un visiteur compte comme indisponible ; de légères oscillations sont normales.
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.6/chart.umd.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------ helpers */
+
+  var css = function (name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  };
+  var SERIES = ["--series-1","--series-2","--series-3","--series-4","--series-5","--series-6","--series-7"];
+  var nf = new Intl.NumberFormat("fr-FR");
+  var MONTHS = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+  var DAYS = ["dim.","lun.","mar.","mer.","jeu.","ven.","sam."];
+
+  function fmtDate(iso) {
+    var d = new Date(iso + "T12:00:00Z");
+    return DAYS[d.getUTCDay()] + " " + d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear();
+  }
+  function fmtDateShort(iso) {
+    var d = new Date(iso + "T12:00:00Z");
+    return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()];
+  }
+  function fmtStamp(iso) {
+    return new Date(iso).toLocaleString("fr-FR", {
+      dateStyle: "long", timeStyle: "short", timeZone: "Europe/Paris"
+    });
+  }
+
+  var ICONS = {
+    ok:      '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg>',
+    quasi:   '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5 15 14H1z"/></svg>',
+    complet: '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>'
+  };
+
+  /** Statut d'une séance : complet / quasi-complet / places disponibles. */
+  function statusOf(free, fillRate) {
+    if (free === 0) return { key: "complet", label: "Complet" };
+    if (fillRate >= 90) return { key: "quasi", label: "Quasi complet" };
+    return { key: "ok", label: "Disponible" };
+  }
+
+  function el(tag, attrs, html) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+
+  /* --------------------------------------------------------- modèle ---- */
+
+  /**
+   * Jauge d'une séance = valeur forcée dans capacityOverrides, sinon le plus
+   * grand nombre de places libres jamais relevé pour cette séance.
+   */
+  function capacityFor(history, id) {
+    var forced = history.capacityOverrides && history.capacityOverrides[id];
+    if (typeof forced === "number" && forced > 0) return { value: forced, estimated: false };
+    var max = 0;
+    history.snapshots.forEach(function (s) {
+      s.readings.forEach(function (r) { if (r.id === id && r.free > max) max = r.free; });
+    });
+    return { value: max, estimated: true };
+  }
+
+  function build(history) {
+    var last = history.snapshots[history.snapshots.length - 1];
+    var caps = {};
+    history.sessions.forEach(function (s) { caps[s.id] = capacityFor(history, s.id); });
+
+    var rows = last.readings.map(function (r) {
+      var cap = caps[r.id] || { value: r.free, estimated: true };
+      var sold = Math.max(0, cap.value - r.free);
+      return {
+        id: r.id, date: r.date, hour: r.hour, free: r.free,
+        capacity: cap.value, estimated: cap.estimated, sold: sold,
+        fillRate: cap.value > 0 ? (sold / cap.value) * 100 : 0
+      };
+    }).sort(function (a, b) {
+      return (a.date + " " + a.hour).localeCompare(b.date + " " + b.hour);
+    });
+
+    // Regroupement par soirée, dans l'ordre chronologique.
+    var evenings = [], byDate = {};
+    rows.forEach(function (r) {
+      if (!byDate[r.date]) { byDate[r.date] = { date: r.date, rows: [] }; evenings.push(byDate[r.date]); }
+      byDate[r.date].rows.push(r);
+    });
+    evenings.forEach(function (e) {
+      e.free = e.rows.reduce(function (s, r) { return s + r.free; }, 0);
+      e.sold = e.rows.reduce(function (s, r) { return s + r.sold; }, 0);
+      e.capacity = e.rows.reduce(function (s, r) { return s + r.capacity; }, 0);
+      e.fillRate = e.capacity > 0 ? (e.sold / e.capacity) * 100 : 0;
+    });
+
+    var total = {
+      free: rows.reduce(function (s, r) { return s + r.free; }, 0),
+      sold: rows.reduce(function (s, r) { return s + r.sold; }, 0),
+      capacity: rows.reduce(function (s, r) { return s + r.capacity; }, 0)
+    };
+    total.fillRate = total.capacity > 0 ? (total.sold / total.capacity) * 100 : 0;
+
+    return { last: last, rows: rows, evenings: evenings, total: total,
+             anyEstimated: rows.some(function (r) { return r.estimated; }) };
+  }
+
+  /* ---------------------------------------------------------- rendu ---- */
+
+  function renderNotice(history, model) {
+    var box = document.getElementById("notice");
+    if (!model.anyEstimated) return;
+    var n = history.snapshots.length;
+    box.hidden = false;
+    box.className = "notice";
+    box.innerHTML =
+      '<svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" style="color:var(--warning);flex:none;margin-top:2px"' +
+      ' aria-hidden="true"><path d="M8 1.5 15 14H1z"/></svg>' +
+      '<div><strong>Jauge estimée.</strong> La billetterie ne publie que les sièges encore achetables, jamais la jauge totale. ' +
+      'La jauge affichée est donc le <em>maximum de places libres jamais relevé</em> pour chaque séance ' +
+      '(' + n + ' relevé' + (n > 1 ? 's' : '') + ' à ce jour) : les ventes antérieures au premier relevé ne sont pas comptées, ' +
+      'et le taux de remplissage est un plancher. ' +
+      'Pour des chiffres exacts, renseignez la jauge réelle par séance dans <code>capacityOverrides</code> de ' +
+      '<code>docs/data/history.json</code>.</div>';
+  }
+
+  function renderTiles(model) {
+    var t = model.total;
+    var tiles = [
+      { label: "Places vendues", value: nf.format(t.sold), foot: "depuis le 1ᵉʳ relevé" },
+      { label: "Places libres",  value: nf.format(t.free), foot: "sur les 14 représentations" },
+      { label: "Jauge suivie",   value: nf.format(t.capacity), foot: model.anyEstimated ? "estimée" : "renseignée" },
+      { label: "Remplissage",    value: t.fillRate.toFixed(1).replace(".", ",") + " %", foot: "sur toute la série" }
+    ];
+    var host = document.getElementById("tiles");
+    host.innerHTML = "";
+    tiles.forEach(function (d) {
+      host.appendChild(el("div", { class: "tile" },
+        '<div class="label">' + d.label + '</div><div class="value">' + d.value + '</div><div class="foot">' + d.foot + '</div>'));
+    });
+  }
+
+  function cell(r) {
+    var st = statusOf(r.free, r.fillRate);
+    var pct = r.fillRate.toFixed(0);
+    return "<td>" + nf.format(r.sold) + "</td>" +
+           "<td>" + nf.format(r.free) + "</td>" +
+           "<td>" + nf.format(r.capacity) + "</td>" +
+           '<td><span class="bar"><i style="width:' + Math.min(100, r.fillRate) + '%"></i></span>' + pct + "&nbsp;%</td>" +
+           '<td><span class="badge ' + st.key + '">' + ICONS[st.key] + st.label + "</span></td>";
+  }
+
+  function renderTable(model) {
+    var tb = document.querySelector("#table tbody");
+    tb.innerHTML = "";
+    model.evenings.forEach(function (e, i) {
+      var color = css(SERIES[i % SERIES.length]);
+      var sub = el("tr", { class: "subtotal" });
+      sub.innerHTML = '<td><span class="swatch" style="background:' + color + '"></span>' + fmtDate(e.date) + "</td>" + cell(e);
+      tb.appendChild(sub);
+      e.rows.forEach(function (r) {
+        var tr = el("tr", { class: "session" });
+        tr.innerHTML = "<td>" + r.hour.replace(":", "h") + "</td>" + cell(r);
+        tb.appendChild(tr);
+      });
+    });
+    var grand = el("tr", { class: "grand" });
+    grand.innerHTML = "<td>Total série — 14 représentations</td>" + cell(model.total);
+    tb.appendChild(grand);
+  }
+
+  /* --------------------------------------------------------- graphique - */
+
+  var chart = null;
+
+  function datasetsFor(history, model, view, eveningDate) {
+    var labels = history.snapshots.map(function (s) { return fmtDateShort(s.day); });
+    var sets = [];
+
+    function line(label, color, data, dashed) {
+      return {
+        label: label, data: data,
+        borderColor: color, backgroundColor: color,
+        borderWidth: 2, borderDash: dashed ? [0, 0] : undefined,
+        tension: 0.25, pointRadius: 0, pointHoverRadius: 5,
+        pointHoverBorderColor: css("--surface-1"), pointHoverBorderWidth: 2,
+        fill: false
+      };
+    }
+
+    if (view === "total") {
+      sets.push(line("Places libres — série entière", css("--series-1"),
+        history.snapshots.map(function (s) {
+          return s.readings.reduce(function (a, r) { return a + r.free; }, 0);
+        })));
+    } else if (view === "soir") {
+      model.evenings.forEach(function (e, i) {
+        sets.push(line(fmtDate(e.date), css(SERIES[i % SERIES.length]),
+          history.snapshots.map(function (s) {
+            return s.readings.reduce(function (a, r) { return r.date === e.date ? a + r.free : a; }, 0);
+          })));
+      });
+    } else {
+      ["19:00", "21:00"].forEach(function (h, i) {
+        sets.push(line(fmtDate(eveningDate) + " · " + h.replace(":", "h"), css(SERIES[i]),
+          history.snapshots.map(function (s) {
+            var hit = s.readings.filter(function (r) { return r.date === eveningDate && r.hour === h; })[0];
+            return hit ? hit.free : null;
+          })));
+      });
+    }
+    return { labels: labels, datasets: sets };
+  }
+
+  function renderChart(history, model, view, eveningDate) {
+    // Le graphique est un plus : si le CDN Chart.js est injoignable, le tableau
+    // et les totaux doivent rester affichés.
+    if (typeof Chart === "undefined") {
+      document.getElementById("chart").hidden = true;
+      document.getElementById("chartFallback").hidden = false;
+      return;
+    }
+    var data = datasetsFor(history, model, view, eveningDate);
+    var textSecondary = css("--text-secondary");
+    var grid = css("--grid");
+
+    document.getElementById("chartCaption").textContent =
+      view === "total" ? "Places encore disponibles sur l'ensemble de la série, relevées une fois par jour."
+      : view === "soir" ? "Places encore disponibles par soirée (19h + 21h), relevées une fois par jour."
+      : "Places encore disponibles pour chaque séance de la soirée sélectionnée.";
+
+    if (chart) chart.destroy();
+    chart = new Chart(document.getElementById("chart"), {
+      type: "line",
+      data: data,
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        layout: { padding: { top: 4, right: 8 } },
+        plugins: {
+          legend: {
+            display: data.datasets.length > 1,
+            position: "bottom",
+            labels: { boxWidth: 9, boxHeight: 9, usePointStyle: true, pointStyle: "rectRounded",
+                      color: textSecondary, font: { size: 12 }, padding: 14 }
+          },
+          tooltip: {
+            backgroundColor: css("--text-primary"), titleColor: css("--surface-1"),
+            bodyColor: css("--surface-1"), padding: 10, cornerRadius: 6, displayColors: true,
+            boxWidth: 8, boxHeight: 8, usePointStyle: true,
+            callbacks: {
+              label: function (c) { return c.dataset.label + " : " + nf.format(c.parsed.y) + " place(s)"; }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, border: { color: grid },
+               ticks: { color: textSecondary, font: { size: 12 }, maxRotation: 0, autoSkipPadding: 16 } },
+          y: { beginAtZero: true, grid: { color: grid, drawTicks: false }, border: { display: false },
+               ticks: { color: textSecondary, font: { size: 12 }, padding: 8,
+                        callback: function (v) { return nf.format(v); } },
+               title: { display: true, text: "Places libres", color: textSecondary, font: { size: 12 } } }
+        }
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------- init ---- */
+
+  function fail(msg) {
+    document.getElementById("updated").innerHTML = '<span class="err">' + msg + "</span>";
+  }
+
+  fetch("./data/history.json", { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (history) {
+      if (!history.snapshots || !history.snapshots.length) throw new Error("historique vide");
+      var model = build(history);
+
+      document.getElementById("updated").textContent =
+        "Dernière mise à jour : " + fmtStamp(model.last.ts) +
+        " · " + history.snapshots.length + " relevé" + (history.snapshots.length > 1 ? "s" : "");
+
+      renderNotice(history, model);
+      renderTiles(model);
+      renderTable(model);
+
+      var picker = document.getElementById("soirPicker");
+      model.evenings.forEach(function (e) {
+        picker.appendChild(el("option", { value: e.date }, fmtDate(e.date)));
+      });
+
+      var view = "total";
+      var redraw = function () {
+        try {
+          renderChart(history, model, view, picker.value);
+        } catch (err) {
+          console.error("Rendu du graphique impossible :", err);
+          document.getElementById("chart").hidden = true;
+          document.getElementById("chartFallback").hidden = false;
+        }
+      };
+
+      document.querySelectorAll(".seg button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.querySelectorAll(".seg button").forEach(function (o) {
+            o.setAttribute("aria-pressed", String(o === b));
+          });
+          view = b.dataset.view;
+          picker.hidden = view !== "seance";
+          redraw();
+        });
+      });
+      picker.addEventListener("change", redraw);
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+
+      redraw();
+    })
+    .catch(function (e) { fail("Impossible de charger les données (" + e.message + ")."); });
+})();
+</script>
+</body>
+</html>

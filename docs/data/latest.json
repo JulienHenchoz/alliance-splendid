@@ -1,0 +1,213 @@
+{
+  "ts": "2026-09-04T18:56:40.602Z",
+  "event": {
+    "slug": "les-doublages-improvises",
+    "title": "Les Doublages improvisés",
+    "venue": "Théâtre du Splendid — 48 rue du Faubourg Saint-Martin, 75010 Paris",
+    "url": "https://billetterie-lesplendid.tickandlive.com/evenement/les-doublages-improvises"
+  },
+  "capacityMode": "observed_max",
+  "sessions": [
+    {
+      "id": "158873",
+      "date": "2026-10-12",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 31,
+      "byZone": {
+        "ORCHESTRE": 18,
+        "1er BALCON": 13
+      },
+      "capacity": 31,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158874",
+      "date": "2026-10-12",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 19,
+      "byZone": {
+        "ORCHESTRE": 11,
+        "1er BALCON": 8
+      },
+      "capacity": 19,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158871",
+      "date": "2026-11-09",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 40,
+      "byZone": {
+        "ORCHESTRE": 7,
+        "1er BALCON": 33
+      },
+      "capacity": 40,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158872",
+      "date": "2026-11-09",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 65,
+      "byZone": {
+        "ORCHESTRE": 36,
+        "1er BALCON": 29
+      },
+      "capacity": 65,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158867",
+      "date": "2026-12-21",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 69,
+      "byZone": {
+        "ORCHESTRE": 47,
+        "1er BALCON": 22
+      },
+      "capacity": 69,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158868",
+      "date": "2026-12-21",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 85,
+      "byZone": {
+        "ORCHESTRE": 58,
+        "1er BALCON": 27
+      },
+      "capacity": 85,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158869",
+      "date": "2027-01-04",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 104,
+      "byZone": {
+        "ORCHESTRE": 71,
+        "1er BALCON": 33
+      },
+      "capacity": 104,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158870",
+      "date": "2027-01-04",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 82,
+      "byZone": {
+        "ORCHESTRE": 49,
+        "1er BALCON": 33
+      },
+      "capacity": 82,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158861",
+      "date": "2027-02-22",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 68,
+      "byZone": {
+        "ORCHESTRE": 49,
+        "1er BALCON": 19
+      },
+      "capacity": 68,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158862",
+      "date": "2027-02-22",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 81,
+      "byZone": {
+        "ORCHESTRE": 52,
+        "1er BALCON": 29
+      },
+      "capacity": 81,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158865",
+      "date": "2027-03-29",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 84,
+      "byZone": {
+        "ORCHESTRE": 51,
+        "1er BALCON": 33
+      },
+      "capacity": 84,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158866",
+      "date": "2027-03-29",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 87,
+      "byZone": {
+        "ORCHESTRE": 54,
+        "1er BALCON": 33
+      },
+      "capacity": 87,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158863",
+      "date": "2027-04-26",
+      "hour": "19:00",
+      "soldOut": false,
+      "free": 87,
+      "byZone": {
+        "ORCHESTRE": 54,
+        "1er BALCON": 33
+      },
+      "capacity": 87,
+      "sold": 0,
+      "fillRate": 0
+    },
+    {
+      "id": "158864",
+      "date": "2027-04-26",
+      "hour": "21:00",
+      "soldOut": false,
+      "free": 87,
+      "byZone": {
+        "ORCHESTRE": 54,
+        "1er BALCON": 33
+      },
+      "capacity": 87,
+      "sold": 0,
+      "fillRate": 0
+    }
+  ],
+  "total": {
+    "capacity": 989,
+    "free": 989,
+    "sold": 0
+  }
+}
