@@ -351,7 +351,7 @@ async function main(): Promise<void> {
   log("");
   log("Places ouvertes à la vente (rangées ouvertes, taille constatée) :");
   for (const r of readings) {
-    const mark = r.capacityIsLowerBound ? "≥" : " ";
+    const mark = r.capacityIsEstimate ? "~" : " ";
     log(
       `  ${r.date} ${r.hour} : ${String(r.sold).padStart(3)} vendues / ` +
         `${String(r.free).padStart(3)} libres sur ${mark}${String(r.openCapacity).padStart(3)} ` +
@@ -364,7 +364,7 @@ async function main(): Promise<void> {
     log("");
     log(
       "Rangées jamais vues entièrement libres — leur taille reste un plancher, " +
-        "d'où les jauges marquées « ≥ » : " +
+        "d'où une part des estimations : " +
         unsettled.map((r) => `${r.zone}/${r.row}=${r.size}`).join(", "),
     );
   }

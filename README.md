@@ -84,14 +84,49 @@ séance : elles ne sont ouvertes pour aucune date de cette série.
 Orchestre et balcon sont deux séquences indépendantes : le balcon s'ouvre dès le
 premier palier alors que le fond d'orchestre attend.
 
-**Les jauges minorées, marquées « ≥ ».** Deux cas déclenchent le signalement :
-une rangée jamais vue entièrement libre (sa taille reste un plancher), ou une
-séance dont le palier est moins profond que celui d'une séance plus lointaine
-(un palier lui est probablement ouvert mais vendu à 100 %, donc invisible).
-Ces jauges **s'affinent d'elles-mêmes** : quand le théâtre ouvrira le palier 3
-sur une date encore peu vendue, ses rangées apparaîtront quasi vides et leur
-taille sera enfin connue. Le recalcul est intégral à chaque passage, donc tout
-l'historique se corrige rétroactivement, sans recollecte.
+**Ce que dit (et ne dit pas) Tick&Live.** L'éditeur ne publie aucune
+documentation technique ni API publique — le site vitrine ne décrit que les
+modules commerciaux. L'API a été sondée directement : aucun paramètre
+(`view`, `zone`, `new`) ne change la réponse, aucun endpoint frère
+(`/quota`, `/availability`, `/stats`) n'existe, et aucun siège n'est jamais
+renvoyé avec `av:"0"`. Une seule catégorie (« CATEGORIE UNIQUE ») et un seul
+tarif (« WEB », 33 €) : rien dans la structure des données n'encode l'ouverture.
+
+**Il n'y a donc pas de règle à découvrir : l'ouverture est un paramétrage
+manuel de back-office**, propre à chaque spectacle. La comparaison avec
+« Le Procès d'une vie », qui joue dans la même salle sur le **même plan
+physique** (les `phid` coïncident exactement : balcon R = 290-294,
+T = 298-310, orchestre I = 141-154 dans les deux spectacles), le démontre :
+
+| | Les Doublages improvisés | Le Procès d'une vie |
+|---|---|---|
+| Catégories | 1 (unique, 33 €) | 3 (39 €, 31 €, Carré OR 44 €) |
+| Rangées ouvertes | B C D E H I J K N + R S T U | A B C D E F G I J L + R S T U V W |
+| Granularité | rangées entières (B = 1→13) | **partielle** : D = places 12, 14, 14B |
+| Étiquetage | B = phid 19-31 | B = phid **24-33** |
+
+Trois conséquences pour ce projet :
+
+1. **Aucune inférence d'un spectacle à l'autre.** Les lettres de rangée sont
+   réattribuées par spectacle — la rangée « B » des Doublages et celle du
+   Procès ne désignent pas les mêmes sièges. Seul le `phid` est stable.
+2. **Une rangée peut n'être ouverte que partiellement.** Ce n'est pas le cas
+   ici (les rangées ouvertes le sont entièrement, positions 1→13 ou 1→14),
+   mais le Procès prouve que le logiciel le permet. Une rangée *déduite*
+   ouverte peut donc être surestimée.
+3. **L'estimation va dans les deux sens**, d'où le champ `observedCapacity` :
+   le total des rangées réellement constatées ouvertes, seul plancher garanti.
+
+**Les jauges estimées, marquées « ~ ».** Trois causes, cumulables :
+une rangée déduite ouverte sans avoir jamais été vue (elle pourrait n'être
+ouverte qu'en partie → surestimation), une rangée jamais vue entièrement libre
+(taille sous-estimée), ou un palier moins profond que celui d'une séance plus
+lointaine. Le dashboard affiche la raison exacte au survol, avec le plancher
+garanti. Ces estimations **s'affinent d'elles-mêmes** : quand le théâtre
+ouvrira un nouveau palier sur une date encore peu vendue, ses rangées
+apparaîtront quasi vides et leur taille sera enfin connue. Le recalcul étant
+intégral à chaque passage, tout l'historique se corrige rétroactivement, sans
+recollecte. Au relevé du 4 septembre 2026 : **11 séances exactes, 3 estimées**.
 
 Si le théâtre vous communique les chiffres exacts, `capacityOverrides` dans
 `docs/data/history.json` prend le pas sur tout le calcul :
@@ -305,7 +340,8 @@ Les messages sont explicites :
 - **Vue d'ensemble** — les 14 représentations : vendues / libres / **places
   ouvertes** / % de remplissage, plus un rappel discret de la jauge physique de
   la salle, avec sous-total par soirée (19h + 21h) et total sur la série.
-  Le « ≥ » signale une jauge minorée (voir plus haut).
+  Le « ~ » signale une jauge estimée : le survol en donne la raison et le
+  plancher garanti.
   Statut par séance : *Disponible*, *Quasi complet* (≥ 90 %), *Complet* (0 place),
   signalé par une icône **et** un libellé, jamais par la couleur seule.
 - **Évolution dans le temps** — courbes des places encore disponibles :

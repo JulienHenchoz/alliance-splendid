@@ -280,9 +280,11 @@
         "1er BALCON/U": 8
       },
       "openCapacity": 131,
+      "observedCapacity": 104,
       "sold": 102,
       "fillRate": 77.9,
-      "capacityIsLowerBound": true
+      "capacityIsEstimate": true,
+      "capacityNote": "Estimation. rangées H, I comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 104 places."
     },
     {
       "id": "158874",
@@ -301,9 +303,11 @@
         "1er BALCON/U": 6
       },
       "openCapacity": 122,
+      "observedCapacity": 83,
       "sold": 103,
       "fillRate": 84.4,
-      "capacityIsLowerBound": true
+      "capacityIsEstimate": true,
+      "capacityNote": "Estimation. rangées T, D, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 83 places."
     },
     {
       "id": "158871",
@@ -322,9 +326,11 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 100,
+      "observedCapacity": 87,
       "sold": 60,
       "fillRate": 60,
-      "capacityIsLowerBound": true
+      "capacityIsEstimate": true,
+      "capacityNote": "Estimation. rangée B comptée ouverte mais jamais vue : vendue à 100 % ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 87 places."
     },
     {
       "id": "158872",
@@ -345,9 +351,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 114,
+      "observedCapacity": 114,
       "sold": 49,
       "fillRate": 43,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158867",
@@ -368,9 +375,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 114,
+      "observedCapacity": 114,
       "sold": 45,
       "fillRate": 39.5,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158868",
@@ -391,9 +399,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 114,
+      "observedCapacity": 114,
       "sold": 29,
       "fillRate": 25.4,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158869",
@@ -414,9 +423,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 114,
+      "observedCapacity": 114,
       "sold": 10,
       "fillRate": 8.8,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158870",
@@ -435,9 +445,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 5,
       "fillRate": 5.7,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158861",
@@ -456,9 +467,10 @@
         "1er BALCON/U": 12
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 19,
       "fillRate": 21.8,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158862",
@@ -477,9 +489,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 6,
       "fillRate": 6.9,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158865",
@@ -498,9 +511,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 3,
       "fillRate": 3.4,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158866",
@@ -519,9 +533,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 0,
       "fillRate": 0,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158863",
@@ -540,9 +555,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 0,
       "fillRate": 0,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     },
     {
       "id": "158864",
@@ -561,9 +577,10 @@
         "1er BALCON/U": 14
       },
       "openCapacity": 87,
+      "observedCapacity": 87,
       "sold": 0,
       "fillRate": 0,
-      "capacityIsLowerBound": false
+      "capacityIsEstimate": false
     }
   ],
   "total": {

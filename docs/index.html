@@ -367,6 +367,12 @@ footer.page a { color: var(--text-secondary); }
     return { key: "ok", label: "Disponible" };
   }
 
+  /** Échappe une chaîne destinée à un attribut HTML. */
+  function esc(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
   function el(tag, attrs, html) {
     var n = document.createElement(tag);
     if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
@@ -392,9 +398,11 @@ footer.page a { color: var(--text-secondary); }
       return {
         id: r.id, date: r.date, hour: r.hour, free: r.free, url: urls[r.id],
         capacity: r.openCapacity || 0,
+        floor: r.observedCapacity || 0,
         sold: r.sold || 0,
         fillRate: r.fillRate || 0,
-        lowerBound: !!r.capacityIsLowerBound,
+        estimate: !!r.capacityIsEstimate,
+        note: r.capacityNote || "",
         venue: venue
       };
     }).sort(function (a, b) {
@@ -402,13 +410,15 @@ footer.page a { color: var(--text-secondary); }
     });
 
     function aggregate(list) {
-      var free = 0, sold = 0, capacity = 0, venue = 0, lower = false;
+      var free = 0, sold = 0, capacity = 0, floor = 0, venue = 0, est = false;
       list.forEach(function (r) {
-        free += r.free; sold += r.sold; capacity += r.capacity; venue += r.venue;
-        lower = lower || r.lowerBound;
+        free += r.free; sold += r.sold; capacity += r.capacity;
+        floor += r.floor; venue += r.venue;
+        est = est || r.estimate;
       });
       return {
-        free: free, sold: sold, capacity: capacity, venue: venue, lowerBound: lower,
+        free: free, sold: sold, capacity: capacity, floor: floor, venue: venue,
+        estimate: est, note: "",
         fillRate: capacity > 0 ? (sold / capacity) * 100 : 0
       };
     }
@@ -426,7 +436,7 @@ footer.page a { color: var(--text-secondary); }
 
     return {
       last: last, rows: rows, evenings: evenings, total: aggregate(rows),
-      anyLowerBound: rows.some(function (r) { return r.lowerBound; })
+      anyEstimate: rows.some(function (r) { return r.estimate; })
     };
   }
 
@@ -445,9 +455,10 @@ footer.page a { color: var(--text-secondary); }
       "des paliers à mesure que la date approche. Rapporter les places libres aux " +
       String(history.venueCapacity) + " fauteuils de la salle compterait les rangées non " +
       "ouvertes comme vendues." +
-      (model.anyLowerBound
-        ? " Le signe <strong>≥</strong> marque une séance dont un palier n'a jamais été " +
-          "observé vide : sa jauge est un plancher, et s'affinera d'elle-même."
+      (model.anyEstimate
+        ? " Le signe <strong>~</strong> marque une jauge estimée : survolez-le pour savoir " +
+          "pourquoi. Ces estimations s'affinent d'elles-mêmes à mesure que le théâtre " +
+          "ouvre de nouveaux paliers sur des dates encore peu vendues."
         : "") +
       "</div>";
   }
@@ -457,8 +468,9 @@ footer.page a { color: var(--text-secondary); }
     var tiles = [
       { label: "Places vendues", value: nf.format(t.sold), foot: "sur toute la série" },
       { label: "Places libres",  value: nf.format(t.free), foot: "sur les 14 représentations" },
-      { label: "Places ouvertes", value: (t.lowerBound ? "≥ " : "") + nf.format(t.capacity),
-        foot: "sur " + nf.format(t.venue) + " fauteuils en salle" },
+      { label: "Places ouvertes", value: (t.estimate ? "~ " : "") + nf.format(t.capacity),
+        foot: t.estimate ? "estimé · " + nf.format(t.floor) + " constatées au minimum"
+                         : "sur " + nf.format(t.venue) + " fauteuils en salle" },
       { label: "Remplissage",    value: t.fillRate.toFixed(1).replace(".", ",") + " %",
         foot: "des places ouvertes" }
     ];
@@ -479,8 +491,11 @@ footer.page a { color: var(--text-secondary); }
         ' title="Ouvrir la billetterie — ' + label + '"' +
         ' aria-label="Ouvrir la billetterie pour ' + label + '">' + TICKET + "</a>"
       : "";
-    var openCell = (r.lowerBound ? '<span class="approx" title="Un palier n\'a jamais été ' +
-      'observé entièrement libre : ce chiffre est un minorant.">≥</span> ' : "") + nf.format(r.capacity);
+    var openCell = (r.estimate
+      ? '<span class="approx" title="' + esc(r.note ||
+          "Estimation : une partie des rangées comptées n'a pas pu être observée directement.") +
+        '">~</span> '
+      : "") + nf.format(r.capacity);
     var venuePct = r.venue > 0 ? Math.round((r.sold / r.venue) * 100) : 0;
     return '<td data-label="Vendues">' + nf.format(r.sold) + "</td>" +
            '<td data-label="Libres">' + nf.format(r.free) + "</td>" +

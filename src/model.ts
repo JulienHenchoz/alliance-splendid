@@ -114,34 +114,49 @@ function comparePositions(a: string, b: string): number {
   return a.localeCompare(b);
 }
 
-/** Rangées jamais vues libres pour cette séance mais situées avant celles qui le sont. */
+/**
+ * Rangées ouvertes pour une séance, en distinguant ce qui est constaté de ce
+ * qui est déduit.
+ *
+ * `seen` : au moins un siège y a été vu libre — certitude.
+ * `inferred` : jamais vue, mais située avant une rangée ouverte dans sa zone.
+ *   Une rangée ouverte n'étant jamais refermée, elle est forcément ouverte et
+ *   vendue à 100 %. C'est ce qui rattrape H et I pour le 12 octobre.
+ *
+ * ⚠︎ La déduction suppose qu'une rangée s'ouvre entièrement. C'est le cas ici,
+ * mais pas une règle du logiciel : « Le Procès d'une vie », dans la même salle
+ * et sur le même plan, n'ouvre que 3 sièges de sa rangée D. Une rangée déduite
+ * peut donc être surestimée — d'où `observedCapacity`, le plancher garanti.
+ */
 function openRowsFor(
   sessionId: string,
   snapshots: History["snapshots"],
   plan: PlanRow[],
-): PlanRow[] {
-  // 1. Ce qu'on a effectivement vu ouvert pour cette séance.
-  const seen = new Set<string>();
+): { seen: PlanRow[]; inferred: PlanRow[] } {
+  const seenKeys = new Set<string>();
   for (const snap of snapshots) {
     for (const reading of snap.readings) {
       if (reading.id !== sessionId) continue;
       for (const [key, count] of Object.entries(reading.byRow ?? {})) {
-        if (count > 0) seen.add(key);
+        if (count > 0) seenKeys.add(key);
       }
     }
   }
-  if (!seen.size) return [];
+  if (!seenKeys.size) return { seen: [], inferred: [] };
 
-  // 2. Profondeur atteinte dans chaque zone.
   const depth: Record<string, number> = {};
   for (const r of plan) {
-    if (!seen.has(rowKey(r.zone, r.row))) continue;
+    if (!seenKeys.has(rowKey(r.zone, r.row))) continue;
     depth[r.zone] = Math.max(depth[r.zone] ?? -Infinity, r.order);
   }
 
-  // 3. Tout ce qui précède cette profondeur est ouvert, vu ou non : une rangée
-  //    vendue à 100 % disparaît du flux sans avoir été refermée.
-  return plan.filter((r) => r.order <= (depth[r.zone] ?? -Infinity));
+  const seen: PlanRow[] = [];
+  const inferred: PlanRow[] = [];
+  for (const r of plan) {
+    if (r.order > (depth[r.zone] ?? -Infinity)) continue;
+    (seenKeys.has(rowKey(r.zone, r.row)) ? seen : inferred).push(r);
+  }
+  return { seen, inferred };
 }
 
 /**
@@ -153,7 +168,7 @@ function openRowsFor(
  */
 export function annotate(history: History): void {
   const plan = history.plan.rows;
-  const openBySession = new Map<string, PlanRow[]>();
+  const openBySession = new Map<string, ReturnType<typeof openRowsFor>>();
 
   for (const session of history.sessions) {
     openBySession.set(session.id, openRowsFor(session.id, history.snapshots, plan));
@@ -161,19 +176,19 @@ export function annotate(history: History): void {
 
   // Une séance dont le palier est MOINS profond que celui d'une séance plus
   // lointaine est suspecte : les paliers ne reculent pas dans le temps, donc
-  // un palier est probablement ouvert chez elle mais vendu à 100 %, donc
-  // invisible. On ne devine pas sa taille, on signale l'incertitude.
+  // un palier lui est probablement ouvert mais vendu à 100 %, donc invisible.
   const depthOf = (id: string, zone: string): number => {
-    const rows = (openBySession.get(id) ?? []).filter((r) => r.zone === zone);
+    const all = openBySession.get(id);
+    const rows = [...(all?.seen ?? []), ...(all?.inferred ?? [])].filter((r) => r.zone === zone);
     return rows.length ? Math.max(...rows.map((r) => r.order)) : -Infinity;
   };
   const zones = [...new Set(plan.map((r) => r.zone))];
-  const dateOf = new Map(history.sessions.map((s) => [s.id, `${s.date} ${s.hour}`]));
+  const keyOf = new Map(history.sessions.map((s) => [s.id, `${s.date} ${s.hour}`]));
   const shallowForItsDate = new Set<string>();
   for (const a of history.sessions) {
     for (const b of history.sessions) {
       if (a.id === b.id) continue;
-      if ((dateOf.get(b.id) ?? "") <= (dateOf.get(a.id) ?? "")) continue;
+      if ((keyOf.get(b.id) ?? "") <= (keyOf.get(a.id) ?? "")) continue;
       if (zones.some((z) => depthOf(b.id, z) > depthOf(a.id, z))) {
         shallowForItsDate.add(a.id);
         break;
@@ -183,27 +198,66 @@ export function annotate(history: History): void {
 
   for (const snap of history.snapshots) {
     for (const reading of snap.readings) {
-      const rows = openBySession.get(reading.id) ?? [];
+      const groups = openBySession.get(reading.id) ?? { seen: [], inferred: [] };
+      const all = [...groups.seen, ...groups.inferred];
       const forced = history.capacityOverrides[reading.id];
-      const computed = rows.reduce((sum, r) => sum + r.size, 0);
+      const computed = all.reduce((sum, r) => sum + r.size, 0);
       const capacity = typeof forced === "number" && forced > 0 ? forced : computed;
 
       reading.openCapacity = capacity;
+      reading.observedCapacity = groups.seen.reduce((sum, r) => sum + r.size, 0);
       reading.sold = Math.max(0, capacity - reading.free);
       reading.fillRate = capacity > 0 ? Math.round((reading.sold / capacity) * 1000) / 10 : 0;
-      // Une rangée dont le maximum n'a été atteint que sur une seule séance
-      // peut très bien être plus grande : la jauge est alors un plancher.
-      reading.capacityIsLowerBound =
-        !forced && (rows.some((r) => !r.settled) || shallowForItsDate.has(reading.id));
+
+      if (forced) {
+        reading.capacityIsEstimate = false;
+        delete reading.capacityNote;
+        continue;
+      }
+
+      const reasons: string[] = [];
+      if (groups.inferred.length) {
+        reasons.push(
+          `rangée${groups.inferred.length > 1 ? "s" : ""} ` +
+            groups.inferred.map((r) => r.row).join(", ") +
+            ` comptée${groups.inferred.length > 1 ? "s" : ""} ouverte${
+              groups.inferred.length > 1 ? "s" : ""
+            } mais jamais vue${groups.inferred.length > 1 ? "s" : ""} : ` +
+            `vendue${groups.inferred.length > 1 ? "s" : ""} à 100 %`,
+        );
+      }
+      const unsettled = all.filter((r) => !r.settled);
+      if (unsettled.length) {
+        reasons.push(
+          `taille de ${unsettled.map((r) => r.row).join(", ")} encore incertaine ` +
+            `(jamais vue${unsettled.length > 1 ? "s" : ""} entièrement libre${
+              unsettled.length > 1 ? "s" : ""
+            })`,
+        );
+      }
+      if (shallowForItsDate.has(reading.id)) {
+        reasons.push("palier moins profond que celui d'une séance plus lointaine");
+      }
+
+      reading.capacityIsEstimate = reasons.length > 0;
+      if (reasons.length) {
+        reading.capacityNote =
+          `Estimation. ${reasons.join(" ; ")}. Plancher garanti : ` +
+          `${reading.observedCapacity} places.`;
+      } else {
+        delete reading.capacityNote;
+      }
     }
   }
 }
 
 /** Détail lisible d'une séance, pour les logs. */
 export function explain(history: History, reading: SessionReading): string {
-  const rows = openRowsFor(reading.id, history.snapshots, history.plan.rows);
+  const groups = openRowsFor(reading.id, history.snapshots, history.plan.rows);
   const byZone: Record<string, string[]> = {};
-  for (const r of rows) (byZone[r.zone] ??= []).push(`${r.row}${r.size}`);
+  for (const r of groups.seen) (byZone[r.zone] ??= []).push(`${r.row}${r.size}`);
+  // Les rangées déduites sont notées entre parenthèses.
+  for (const r of groups.inferred) (byZone[r.zone] ??= []).push(`(${r.row}${r.size})`);
   return Object.entries(byZone)
     .map(([zone, list]) => `${zone} ${list.join(" ")}`)
     .join(" | ");

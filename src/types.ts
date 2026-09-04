@@ -72,14 +72,28 @@ export interface SessionReading {
   /* --- Champs dérivés : recalculés intégralement à chaque passage, ---
      --- pour que l'historique bénéficie des progrès du catalogue.    --- */
 
-  /** Places ouvertes à la vente pour cette séance (somme des rangées ouvertes). */
+  /** Places ouvertes à la vente : rangées vues ouvertes + rangées déduites. */
   openCapacity?: number;
+  /**
+   * Part de `openCapacity` réellement constatée (rangées dont au moins un siège
+   * a été vu libre pour cette séance). Plancher certain : `openCapacity` sans
+   * les rangées déduites par monotonie.
+   */
+  observedCapacity?: number;
   /** openCapacity − free. */
   sold?: number;
   /** Pourcentage de remplissage des places ouvertes. */
   fillRate?: number;
-  /** true si au moins une rangée comptée n'a pas de taille corroborée. */
-  capacityIsLowerBound?: boolean;
+  /**
+   * true si `openCapacity` est une estimation. Deux causes, cumulables :
+   * une rangée déduite ouverte sans jamais avoir été vue (elle pourrait
+   * n'être ouverte que partiellement → surestimation), ou une rangée jamais
+   * vue entièrement libre (taille sous-estimée). L'incertitude va donc dans
+   * les deux sens : `observedCapacity` est le seul plancher garanti.
+   */
+  capacityIsEstimate?: boolean;
+  /** Explication courte de l'estimation, pour l'infobulle du dashboard. */
+  capacityNote?: string;
 }
 
 /** Un passage complet du collecteur. */
