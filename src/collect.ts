@@ -30,6 +30,21 @@ const EVENT_URL = `${ORIGIN}/evenement/${SLUG}`;
 
 /** Nombre de séances attendues (7 dates × 19h/21h). Garde-fou. */
 const EXPECTED_SESSIONS = 14;
+
+/**
+ * Jauge par défaut d'une séance, en nombre de places.
+ *
+ * Cette valeur est SAISIE À LA MAIN : la billetterie ne publie jamais le total.
+ * L'endpoint `zones` ne renvoie que les sièges achetables, le SVG du plan ne
+ * dessine que ceux-là, et les sièges vendus n'apparaissent que comme des pixels
+ * dans une image de fond identique pour les 14 séances — rien à en tirer de
+ * fiable automatiquement.
+ *
+ * 300 = capacité annoncée du Théâtre du Splendid. Si le contingent réellement
+ * mis en vente diffère, ou varie d'une séance à l'autre, renseignez
+ * `capacityOverrides` dans docs/data/history.json plutôt que de changer ceci.
+ */
+const DEFAULT_CAPACITY = 300;
 /** Politesse : délai entre deux appels séance. */
 const DELAY_MS = 1_500;
 const TIMEOUT_MS = 20_000;
@@ -190,14 +205,15 @@ async function fetchAvailability(session: SessionMeta): Promise<SessionReading> 
 
 function emptyHistory(): History {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     event: {
       slug: SLUG,
       title: "Les Doublages improvisés",
       venue: "Théâtre du Splendid — 48 rue du Faubourg Saint-Martin, 75010 Paris",
       url: EVENT_URL,
     },
-    capacityMode: "observed_max",
+    capacityMode: "fixed",
+    defaultCapacity: DEFAULT_CAPACITY,
     capacityOverrides: {},
     sessions: [],
     snapshots: [],
@@ -206,13 +222,26 @@ function emptyHistory(): History {
 
 async function loadHistory(): Promise<History> {
   try {
-    const parsed = JSON.parse(await readFile(HISTORY_PATH, "utf8")) as History;
-    if (parsed.schemaVersion !== 1) {
+    // Le fichier sur disque peut être dans une version de schéma antérieure :
+    // on le lit en type « large » avant de le normaliser.
+    const parsed = JSON.parse(await readFile(HISTORY_PATH, "utf8")) as Omit<
+      History,
+      "schemaVersion" | "capacityMode"
+    > & { schemaVersion: number; capacityMode: string };
+
+    if (parsed.schemaVersion === 1) {
+      // v1 déduisait la jauge du maximum de places libres observé, ce qui
+      // sous-estimait fortement les ventes. v2 utilise une jauge saisie.
+      log("Historique en schéma v1 — migration vers v2 (jauge saisie).");
+      parsed.schemaVersion = 2;
+    }
+    if (parsed.schemaVersion !== 2) {
       throw new CollectError(`Version de schéma inattendue : ${String(parsed.schemaVersion)}`);
     }
+    parsed.defaultCapacity ??= DEFAULT_CAPACITY;
     parsed.capacityOverrides ??= {};
     parsed.snapshots ??= [];
-    return parsed;
+    return { ...parsed, schemaVersion: 2, capacityMode: "fixed" };
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") {
       log("Aucun historique existant — création d'un fichier neuf.");
@@ -222,17 +251,11 @@ async function loadHistory(): Promise<History> {
   }
 }
 
-/** Jauge retenue pour une séance : override manuel, sinon max des relevés. */
+/** Jauge retenue pour une séance : sa valeur propre si elle en a une, sinon la jauge par défaut. */
 function capacityFor(history: History, sessionId: string): number {
   const override = history.capacityOverrides[sessionId];
   if (typeof override === "number" && override > 0) return override;
-  let max = 0;
-  for (const snap of history.snapshots) {
-    for (const r of snap.readings) {
-      if (r.id === sessionId && r.free > max) max = r.free;
-    }
-  }
-  return max;
+  return history.defaultCapacity;
 }
 
 /** Vue dérivée pratique pour un coup d'œil rapide / un futur usage tiers. */
@@ -253,6 +276,7 @@ function buildLatest(history: History) {
     ts: last.ts,
     event: history.event,
     capacityMode: history.capacityMode,
+    defaultCapacity: history.defaultCapacity,
     sessions: rows,
     total: {
       capacity: rows.reduce((s, r) => s + r.capacity, 0),
@@ -297,8 +321,24 @@ async function main(): Promise<void> {
   }
   history.snapshots.sort((a, b) => a.ts.localeCompare(b.ts));
 
+  // Garde-fou sur la jauge : plus de places libres que la jauge déclarée signifie
+  // que la jauge est fausse, pas que la mesure l'est. On le signale fort — les
+  // « vendues » et le taux de remplissage seraient sinon silencieusement faux.
+  const overCapacity = readings.filter((r) => r.free > capacityFor(history, r.id));
+  for (const r of overCapacity) {
+    log(
+      `  ⚠︎ ${r.date} ${r.hour} : ${r.free} places libres pour une jauge de ` +
+        `${capacityFor(history, r.id)}. Corrigez defaultCapacity ou capacityOverrides ` +
+        `dans docs/data/history.json.`,
+    );
+  }
+
   const totalFree = readings.reduce((s, r) => s + r.free, 0);
-  log(`Total places libres sur la série : ${totalFree} — ${history.snapshots.length} snapshot(s) en historique.`);
+  const totalCapacity = readings.reduce((s, r) => s + capacityFor(history, r.id), 0);
+  log(
+    `Total : ${totalCapacity - totalFree} vendues / ${totalFree} libres ` +
+      `sur ${totalCapacity} places — ${history.snapshots.length} snapshot(s) en historique.`,
+  );
 
   if (DRY_RUN) {
     log("--dry-run : rien n'est écrit sur le disque.");

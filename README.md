@@ -38,30 +38,41 @@ chaque exécution, la liste ci-dessous n'est qu'indicative) :
 > n'utilise que `fetch`. C'est la voie recommandée par le cahier des charges, et
 > la plus rapide (~25 s pour les 14 séances, délai de politesse compris).
 
-### ⚠️ La jauge totale n'est pas publiée
+### ⚠️ La jauge totale n'est pas publiée — elle est saisie à la main
 
-L'endpoint ne liste **que les sièges achetables**. Il ne dit jamais combien la
-salle en compte au total. Conséquence : le nombre de places *vendues* ne peut pas
-être lu directement, il doit être déduit d'une jauge de référence.
+Vérifié de trois façons, la billetterie ne donne le total nulle part :
 
-Deux modes, cumulables :
+- `GET /map/0/{id}/zones` ne renvoie **que** les sièges achetables ;
+- le SVG du plan (`.containerMap`) ne dessine **que** ces mêmes sièges
+  (`circle.seats.area--available`) ;
+- les sièges vendus n'existent que comme pixels dans une image de fond
+  (`/maps/104-{id}.jpg`) — dont le hash est **identique pour les 14 séances**,
+  c'est donc un plan statique, sans information de disponibilité.
 
-1. **`observed_max` (par défaut).** La jauge d'une séance est le plus grand nombre
-   de places libres jamais relevé pour elle. C'est un **plancher** : les ventes
-   antérieures au premier relevé ne sont pas comptées, donc le taux de remplissage
-   est sous-estimé au démarrage, puis se stabilise.
-2. **Jauge forcée (recommandé dès que le chiffre est connu).** Renseignez la jauge
-   réelle mise en vente web dans `capacityOverrides` de `docs/data/history.json` :
+La jauge est donc une **valeur de configuration**, pas une mesure :
 
-   ```jsonc
-   "capacityOverrides": {
-     "158873": 350,
-     "158874": 350
-   }
-   ```
+```jsonc
+// docs/data/history.json
+"capacityMode": "fixed",
+"defaultCapacity": 300,      // capacité annoncée du Splendid
+"capacityOverrides": {}      // jauge propre à une séance : { "158873": 280 }
+```
 
-   Toute séance listée là utilise cette valeur ; les autres restent en `observed_max`.
-   Le dashboard affiche un bandeau tant qu'au moins une jauge est estimée.
+`defaultCapacity` s'applique à toute séance absente de `capacityOverrides`.
+Modifier ces valeurs recalcule **tout l'historique** au prochain affichage :
+aucune recollecte n'est nécessaire, les relevés ne stockent que les places libres.
+
+**À vérifier auprès du théâtre.** Si le contingent réellement mis en vente sur
+le web est inférieur à la jauge physique (quota, places pro, jauge réduite), les
+« vendues » gonflent artificiellement. Indice à surveiller : les séances les plus
+lointaines n'ont jamais montré plus de ~104 places libres, ce qui suggère un
+contingent web bien inférieur à 300. Demandez le contingent par séance et
+inscrivez-le dans `capacityOverrides` — c'est le seul moyen d'avoir des chiffres
+exacts.
+
+Le collecteur signale dans ses logs, et le dashboard dans un bandeau, toute
+séance affichant **plus de places libres que sa jauge** : c'est le signe que la
+jauge est fausse.
 
 ### Autres limites connues
 
@@ -94,10 +105,11 @@ docs/                # racine du site publié
 
 ```jsonc
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "event":   { "slug": "…", "title": "…", "venue": "…", "url": "…" },
-  "capacityMode": "observed_max",
-  "capacityOverrides": {},                  // { "158873": 350, … }
+  "capacityMode": "fixed",
+  "defaultCapacity": 300,                   // jauge appliquée par défaut
+  "capacityOverrides": {},                  // jauge par séance : { "158873": 280 }
   "sessions": [                             // dernier état connu des 14 séances
     { "id": "158873", "date": "2026-10-12", "hour": "19:00",
       "soldOut": false, "url": "https://…/reserver/…/158873" }

@@ -46,15 +46,20 @@ export interface Snapshot {
 
 export interface History {
   /** Version du schéma, pour migrations futures. */
-  schemaVersion: 1;
+  schemaVersion: 2;
   event: EventMeta;
   /**
-   * Jauge de référence. "observed_max" : la capacité d'une séance est le plus
-   * grand nombre de places libres jamais relevé pour cette séance. Les valeurs
-   * de `capacityOverrides` prennent le pas quand elles sont renseignées.
+   * Jauge de référence, saisie à la main.
+   *
+   * La billetterie n'expose le total nulle part : l'endpoint `zones` ne renvoie
+   * que les sièges achetables, le SVG du plan ne dessine que ceux-là, et les
+   * sièges vendus n'existent que sous forme de pixels dans une image de fond
+   * (la même pour les 14 séances). La jauge doit donc être fournie.
    */
-  capacityMode: "observed_max";
-  /** Jauge forcée par séance, ex. { "158873": 350 }. Vide par défaut. */
+  capacityMode: "fixed";
+  /** Jauge appliquée à toute séance sans valeur propre. */
+  defaultCapacity: number;
+  /** Jauge spécifique à une séance, ex. { "158873": 280 }. Prime sur defaultCapacity. */
   capacityOverrides: Record<string, number>;
   /** Séances connues, dernier état vu (ordre chronologique). */
   sessions: SessionMeta[];

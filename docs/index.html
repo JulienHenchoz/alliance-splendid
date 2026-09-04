@@ -264,17 +264,14 @@ footer.page a { color: var(--text-secondary); }
   /* --------------------------------------------------------- modèle ---- */
 
   /**
-   * Jauge d'une séance = valeur forcée dans capacityOverrides, sinon le plus
-   * grand nombre de places libres jamais relevé pour cette séance.
+   * Jauge d'une séance : sa valeur propre dans capacityOverrides, sinon la
+   * jauge par défaut du fichier. Elle est saisie à la main — la billetterie ne
+   * publie jamais le total, seulement ce qui reste à vendre.
    */
   function capacityFor(history, id) {
     var forced = history.capacityOverrides && history.capacityOverrides[id];
-    if (typeof forced === "number" && forced > 0) return { value: forced, estimated: false };
-    var max = 0;
-    history.snapshots.forEach(function (s) {
-      s.readings.forEach(function (r) { if (r.id === id && r.free > max) max = r.free; });
-    });
-    return { value: max, estimated: true };
+    if (typeof forced === "number" && forced > 0) return { value: forced, perSession: true };
+    return { value: history.defaultCapacity || 0, perSession: false };
   }
 
   function build(history) {
@@ -283,11 +280,13 @@ footer.page a { color: var(--text-secondary); }
     history.sessions.forEach(function (s) { caps[s.id] = capacityFor(history, s.id); });
 
     var rows = last.readings.map(function (r) {
-      var cap = caps[r.id] || { value: r.free, estimated: true };
+      var cap = caps[r.id] || { value: history.defaultCapacity || 0, perSession: false };
       var sold = Math.max(0, cap.value - r.free);
       return {
         id: r.id, date: r.date, hour: r.hour, free: r.free,
-        capacity: cap.value, estimated: cap.estimated, sold: sold,
+        capacity: cap.value, sold: sold,
+        // Plus de places libres que la jauge : c'est la jauge qui est fausse.
+        overCapacity: r.free > cap.value,
         fillRate: cap.value > 0 ? (sold / cap.value) * 100 : 0
       };
     }).sort(function (a, b) {
@@ -315,34 +314,34 @@ footer.page a { color: var(--text-secondary); }
     total.fillRate = total.capacity > 0 ? (total.sold / total.capacity) * 100 : 0;
 
     return { last: last, rows: rows, evenings: evenings, total: total,
-             anyEstimated: rows.some(function (r) { return r.estimated; }) };
+             overCapacity: rows.filter(function (r) { return r.overCapacity; }) };
   }
 
   /* ---------------------------------------------------------- rendu ---- */
 
   function renderNotice(history, model) {
     var box = document.getElementById("notice");
-    if (!model.anyEstimated) return;
-    var n = history.snapshots.length;
+    if (!model.overCapacity.length) return;
+    var list = model.overCapacity.map(function (r) {
+      return fmtDate(r.date) + " " + r.hour.replace(":", "h") + " (" + r.free + " libres)";
+    }).join(", ");
     box.hidden = false;
     box.className = "notice";
     box.innerHTML =
       '<svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" style="color:var(--warning);flex:none;margin-top:2px"' +
       ' aria-hidden="true"><path d="M8 1.5 15 14H1z"/></svg>' +
-      '<div><strong>Jauge estimée.</strong> La billetterie ne publie que les sièges encore achetables, jamais la jauge totale. ' +
-      'La jauge affichée est donc le <em>maximum de places libres jamais relevé</em> pour chaque séance ' +
-      '(' + n + ' relevé' + (n > 1 ? 's' : '') + ' à ce jour) : les ventes antérieures au premier relevé ne sont pas comptées, ' +
-      'et le taux de remplissage est un plancher. ' +
-      'Pour des chiffres exacts, renseignez la jauge réelle par séance dans <code>capacityOverrides</code> de ' +
-      '<code>docs/data/history.json</code>.</div>';
+      '<div><strong>Jauge à corriger.</strong> Ces séances affichent plus de places libres que la jauge ' +
+      'de référence (' + nf.format(history.defaultCapacity) + ' places) : ' + list + '. ' +
+      'Les chiffres de vente les concernant sont faux tant que la jauge n\'est pas ajustée dans ' +
+      '<code>defaultCapacity</code> ou <code>capacityOverrides</code> de <code>docs/data/history.json</code>.</div>';
   }
 
   function renderTiles(model) {
     var t = model.total;
     var tiles = [
-      { label: "Places vendues", value: nf.format(t.sold), foot: "depuis le 1ᵉʳ relevé" },
+      { label: "Places vendues", value: nf.format(t.sold), foot: "sur toute la série" },
       { label: "Places libres",  value: nf.format(t.free), foot: "sur les 14 représentations" },
-      { label: "Jauge suivie",   value: nf.format(t.capacity), foot: model.anyEstimated ? "estimée" : "renseignée" },
+      { label: "Jauge totale",   value: nf.format(t.capacity), foot: "14 × " + nf.format(t.capacity / 14) + " places" },
       { label: "Remplissage",    value: t.fillRate.toFixed(1).replace(".", ",") + " %", foot: "sur toute la série" }
     ];
     var host = document.getElementById("tiles");

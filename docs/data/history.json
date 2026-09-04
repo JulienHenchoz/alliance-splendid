@@ -1,12 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
     "venue": "Théâtre du Splendid — 48 rue du Faubourg Saint-Martin, 75010 Paris",
     "url": "https://billetterie-lesplendid.tickandlive.com/evenement/les-doublages-improvises"
   },
-  "capacityMode": "observed_max",
+  "capacityMode": "fixed",
+  "defaultCapacity": 300,
   "capacityOverrides": {},
   "sessions": [
     {
