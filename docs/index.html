@@ -130,6 +130,10 @@ tbody tr.grand td { font-weight: 700; border-top: 2px solid var(--border); borde
 .badge.quasi svg    { color: var(--warning); }
 .badge.complet svg  { color: var(--critical); }
 
+/* Colonne « salle » : rappel de la jauge physique, volontairement discrète. */
+td.venue, th.venue { color: var(--text-muted); font-weight: 400; }
+.approx { color: var(--text-muted); cursor: help; }
+
 /* ---- lien billetterie ---- */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -224,6 +228,7 @@ select {
   #table tr.session td.fill { grid-column: 1 / 4; font-weight: 400; }
   #table tr.session td.fill .bar { width: calc(100% - 56px); max-width: none; }
   #table tr.session td.stat { grid-column: 1 / 4; }
+  #table tr.session td.venue, #table tr.subtotal td.venue { display: none; }
 
   /* Total de la série : une carte pleine, détachée. */
   #table tr.grand {
@@ -275,8 +280,9 @@ footer.page a { color: var(--text-secondary); }
         <th scope="col">Représentation</th>
         <th scope="col">Vendues</th>
         <th scope="col">Libres</th>
-        <th scope="col">Jauge</th>
+        <th scope="col">Ouvertes</th>
         <th scope="col">Remplissage</th>
+        <th scope="col" class="venue">Salle</th>
         <th scope="col">Statut</th>
         <th scope="col"><span class="sr-only">Billetterie</span></th>
       </tr></thead>
@@ -371,37 +377,41 @@ footer.page a { color: var(--text-secondary); }
   /* --------------------------------------------------------- modèle ---- */
 
   /**
-   * Jauge d'une séance : sa valeur propre dans capacityOverrides, sinon la
-   * jauge par défaut du fichier. Elle est saisie à la main — la billetterie ne
-   * publie jamais le total, seulement ce qui reste à vendre.
+   * Le calcul des places ouvertes est fait par le collecteur (src/model.ts) et
+   * stocké dans l'historique : le théâtre n'ouvre qu'une partie des rangées à
+   * la vente, et distinguer « vendu » de « pas encore ouvert » demande de
+   * croiser les 14 séances. La page se contente de lire le résultat.
    */
-  function capacityFor(history, id) {
-    var forced = history.capacityOverrides && history.capacityOverrides[id];
-    if (typeof forced === "number" && forced > 0) return { value: forced, perSession: true };
-    return { value: history.defaultCapacity || 0, perSession: false };
-  }
-
   function build(history) {
     var last = history.snapshots[history.snapshots.length - 1];
-    var caps = {}, urls = {};
-    history.sessions.forEach(function (s) {
-      caps[s.id] = capacityFor(history, s.id);
-      urls[s.id] = s.url;
-    });
+    var urls = {};
+    history.sessions.forEach(function (s) { urls[s.id] = s.url; });
+    var venue = history.venueCapacity || 0;
 
     var rows = last.readings.map(function (r) {
-      var cap = caps[r.id] || { value: history.defaultCapacity || 0, perSession: false };
-      var sold = Math.max(0, cap.value - r.free);
       return {
-        id: r.id, date: r.date, hour: r.hour, free: r.free,
-        url: urls[r.id], capacity: cap.value, sold: sold,
-        // Plus de places libres que la jauge : c'est la jauge qui est fausse.
-        overCapacity: r.free > cap.value,
-        fillRate: cap.value > 0 ? (sold / cap.value) * 100 : 0
+        id: r.id, date: r.date, hour: r.hour, free: r.free, url: urls[r.id],
+        capacity: r.openCapacity || 0,
+        sold: r.sold || 0,
+        fillRate: r.fillRate || 0,
+        lowerBound: !!r.capacityIsLowerBound,
+        venue: venue
       };
     }).sort(function (a, b) {
       return (a.date + " " + a.hour).localeCompare(b.date + " " + b.hour);
     });
+
+    function aggregate(list) {
+      var free = 0, sold = 0, capacity = 0, venue = 0, lower = false;
+      list.forEach(function (r) {
+        free += r.free; sold += r.sold; capacity += r.capacity; venue += r.venue;
+        lower = lower || r.lowerBound;
+      });
+      return {
+        free: free, sold: sold, capacity: capacity, venue: venue, lowerBound: lower,
+        fillRate: capacity > 0 ? (sold / capacity) * 100 : 0
+      };
+    }
 
     // Regroupement par soirée, dans l'ordre chronologique.
     var evenings = [], byDate = {};
@@ -410,40 +420,36 @@ footer.page a { color: var(--text-secondary); }
       byDate[r.date].rows.push(r);
     });
     evenings.forEach(function (e) {
-      e.free = e.rows.reduce(function (s, r) { return s + r.free; }, 0);
-      e.sold = e.rows.reduce(function (s, r) { return s + r.sold; }, 0);
-      e.capacity = e.rows.reduce(function (s, r) { return s + r.capacity; }, 0);
-      e.fillRate = e.capacity > 0 ? (e.sold / e.capacity) * 100 : 0;
+      var agg = aggregate(e.rows);
+      for (var k in agg) e[k] = agg[k];
     });
 
-    var total = {
-      free: rows.reduce(function (s, r) { return s + r.free; }, 0),
-      sold: rows.reduce(function (s, r) { return s + r.sold; }, 0),
-      capacity: rows.reduce(function (s, r) { return s + r.capacity; }, 0)
+    return {
+      last: last, rows: rows, evenings: evenings, total: aggregate(rows),
+      anyLowerBound: rows.some(function (r) { return r.lowerBound; })
     };
-    total.fillRate = total.capacity > 0 ? (total.sold / total.capacity) * 100 : 0;
-
-    return { last: last, rows: rows, evenings: evenings, total: total,
-             overCapacity: rows.filter(function (r) { return r.overCapacity; }) };
   }
 
   /* ---------------------------------------------------------- rendu ---- */
 
   function renderNotice(history, model) {
     var box = document.getElementById("notice");
-    if (!model.overCapacity.length) return;
-    var list = model.overCapacity.map(function (r) {
-      return fmtDate(r.date) + " " + r.hour.replace(":", "h") + " (" + r.free + " libres)";
-    }).join(", ");
     box.hidden = false;
     box.className = "notice";
     box.innerHTML =
-      '<svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" style="color:var(--warning);flex:none;margin-top:2px"' +
-      ' aria-hidden="true"><path d="M8 1.5 15 14H1z"/></svg>' +
-      '<div><strong>Jauge à corriger.</strong> Ces séances affichent plus de places libres que la jauge ' +
-      'de référence (' + nf.format(history.defaultCapacity) + ' places) : ' + list + '. ' +
-      'Les chiffres de vente les concernant sont faux tant que la jauge n\'est pas ajustée dans ' +
-      '<code>defaultCapacity</code> ou <code>capacityOverrides</code> de <code>docs/data/history.json</code>.</div>';
+      '<svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" style="color:var(--series-1);flex:none;margin-top:2px"' +
+      ' aria-hidden="true"><circle cx="8" cy="8" r="7"/></svg>' +
+      "<div><strong>Le remplissage se calcule sur les places ouvertes à la vente, " +
+      "pas sur la salle entière.</strong> Le théâtre n'ouvre d'abord que les rangées " +
+      "proches de la scène (87 places : orchestre B\u2013E, balcon R\u2013U) puis ajoute " +
+      "des paliers à mesure que la date approche. Rapporter les places libres aux " +
+      String(history.venueCapacity) + " fauteuils de la salle compterait les rangées non " +
+      "ouvertes comme vendues." +
+      (model.anyLowerBound
+        ? " Le signe <strong>≥</strong> marque une séance dont un palier n'a jamais été " +
+          "observé vide : sa jauge est un plancher, et s'affinera d'elle-même."
+        : "") +
+      "</div>";
   }
 
   function renderTiles(model) {
@@ -451,8 +457,10 @@ footer.page a { color: var(--text-secondary); }
     var tiles = [
       { label: "Places vendues", value: nf.format(t.sold), foot: "sur toute la série" },
       { label: "Places libres",  value: nf.format(t.free), foot: "sur les 14 représentations" },
-      { label: "Jauge totale",   value: nf.format(t.capacity), foot: "14 × " + nf.format(t.capacity / 14) + " places" },
-      { label: "Remplissage",    value: t.fillRate.toFixed(1).replace(".", ",") + " %", foot: "sur toute la série" }
+      { label: "Places ouvertes", value: (t.lowerBound ? "≥ " : "") + nf.format(t.capacity),
+        foot: "sur " + nf.format(t.venue) + " fauteuils en salle" },
+      { label: "Remplissage",    value: t.fillRate.toFixed(1).replace(".", ",") + " %",
+        foot: "des places ouvertes" }
     ];
     var host = document.getElementById("tiles");
     host.innerHTML = "";
@@ -471,11 +479,15 @@ footer.page a { color: var(--text-secondary); }
         ' title="Ouvrir la billetterie — ' + label + '"' +
         ' aria-label="Ouvrir la billetterie pour ' + label + '">' + TICKET + "</a>"
       : "";
+    var openCell = (r.lowerBound ? '<span class="approx" title="Un palier n\'a jamais été ' +
+      'observé entièrement libre : ce chiffre est un minorant.">≥</span> ' : "") + nf.format(r.capacity);
+    var venuePct = r.venue > 0 ? Math.round((r.sold / r.venue) * 100) : 0;
     return '<td data-label="Vendues">' + nf.format(r.sold) + "</td>" +
            '<td data-label="Libres">' + nf.format(r.free) + "</td>" +
-           '<td data-label="Jauge">' + nf.format(r.capacity) + "</td>" +
+           '<td data-label="Ouvertes">' + openCell + "</td>" +
            '<td data-label="Remplissage" class="fill"><span class="bar"><i style="width:' +
              Math.min(100, r.fillRate) + '%"></i></span>' + pct + "&nbsp;%</td>" +
+           '<td data-label="Salle" class="venue">' + nf.format(r.venue) + " pl. · " + venuePct + "&nbsp;%</td>" +
            '<td class="stat"><span class="badge ' + st.key + '">' + ICONS[st.key] + st.label + "</span></td>" +
            '<td class="book">' + book + "</td>";
   }

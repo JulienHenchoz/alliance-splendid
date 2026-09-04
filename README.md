@@ -38,41 +38,68 @@ chaque exécution, la liste ci-dessous n'est qu'indicative) :
 > n'utilise que `fetch`. C'est la voie recommandée par le cahier des charges, et
 > la plus rapide (~25 s pour les 14 séances, délai de politesse compris).
 
-### ⚠️ La jauge totale n'est pas publiée — elle est saisie à la main
+### ⚠️ Le point délicat : ouvert à la vente ≠ vendu
 
-Vérifié de trois façons, la billetterie ne donne le total nulle part :
+Un siège absent du flux est soit **vendu**, soit **pas encore ouvert à la vente**.
+Le théâtre n'ouvre pas toute la salle d'emblée : il commence par les rangées
+proches de la scène et ajoute des paliers à mesure que la date approche —
+vraisemblablement pour grouper le public plutôt que le disperser.
 
-- `GET /map/0/{id}/zones` ne renvoie **que** les sièges achetables ;
-- le SVG du plan (`.containerMap`) ne dessine **que** ces mêmes sièges
-  (`circle.seats.area--available`) ;
-- les sièges vendus n'existent que comme pixels dans une image de fond
-  (`/maps/104-{id}.jpg`) — dont le hash est **identique pour les 14 séances**,
-  c'est donc un plan statique, sans information de disponibilité.
+Rapporter les places libres à la jauge physique donnait donc des chiffres faux :
+le 26 avril 2027, dont **rien n'est vendu**, s'affichait à 71 % de remplissage,
+parce que les rangées non ouvertes étaient comptées comme vendues.
 
-La jauge est donc une **valeur de configuration**, pas une mesure :
+**Les paliers observés**, reconstitués en croisant les 14 séances :
+
+| Palier | Orchestre | 1er balcon | Cumul |
+|---|---|---|---|
+| 1 | B(13) C(14) D(13) E(14) | R(3) S(3) T(13) U(14) | **87** |
+| 2 | + H(13) I(14) | | **114** |
+| 3 | + J K N | | **131+** |
+
+Les rangées A, F, G, L, M, O, P et tout le 2ᵉ balcon n'apparaissent dans aucune
+séance : elles ne sont ouvertes pour aucune date de cette série.
+
+**Ce qui rend le problème soluble** (voir `src/model.ts`) :
+
+1. Une rangée ouverte n'est jamais refermée — les paliers ne font que s'ajouter,
+   dans le même ordre physique pour toutes les séances.
+2. Les séances lointaines n'ont presque rien vendu : elles montrent leurs
+   rangées ouvertes **intégralement libres**, ce qui en donne la taille réelle.
+3. Le `phid` de Tick&Live est un index dense sur le plan, ordonné par rangée :
+   il donne l'ordre physique, donc l'ordre des paliers.
+
+**La méthode :**
+
+- Taille d'une rangée = nombre de numéros de place distincts vus libres au moins
+  une fois, toutes séances confondues. (Compter les places d'un seul relevé ne
+  suffit pas : la rangée J n'a jamais montré plus de 4 places libres d'un coup,
+  mais 8 sièges distincts sur l'ensemble des séances.)
+- Une rangée est **ouverte** pour une séance si un de ses sièges y a été vu libre.
+- Par **monotonie**, si une rangée est ouverte, celles qui la précèdent dans sa
+  zone le sont aussi — même vendues à 100 %, donc invisibles. C'est ce qui
+  rattrape H et I pour le 12 octobre.
+- Jauge ouverte = somme des tailles des rangées ouvertes ; vendues = jauge − libres.
+
+Orchestre et balcon sont deux séquences indépendantes : le balcon s'ouvre dès le
+premier palier alors que le fond d'orchestre attend.
+
+**Les jauges minorées, marquées « ≥ ».** Deux cas déclenchent le signalement :
+une rangée jamais vue entièrement libre (sa taille reste un plancher), ou une
+séance dont le palier est moins profond que celui d'une séance plus lointaine
+(un palier lui est probablement ouvert mais vendu à 100 %, donc invisible).
+Ces jauges **s'affinent d'elles-mêmes** : quand le théâtre ouvrira le palier 3
+sur une date encore peu vendue, ses rangées apparaîtront quasi vides et leur
+taille sera enfin connue. Le recalcul est intégral à chaque passage, donc tout
+l'historique se corrige rétroactivement, sans recollecte.
+
+Si le théâtre vous communique les chiffres exacts, `capacityOverrides` dans
+`docs/data/history.json` prend le pas sur tout le calcul :
 
 ```jsonc
-// docs/data/history.json
-"capacityMode": "fixed",
-"defaultCapacity": 300,      // capacité annoncée du Splendid
-"capacityOverrides": {}      // jauge propre à une séance : { "158873": 280 }
+"venueCapacity": 300,          // jauge physique, indicative uniquement
+"capacityOverrides": { "158873": 140 }
 ```
-
-`defaultCapacity` s'applique à toute séance absente de `capacityOverrides`.
-Modifier ces valeurs recalcule **tout l'historique** au prochain affichage :
-aucune recollecte n'est nécessaire, les relevés ne stockent que les places libres.
-
-**À vérifier auprès du théâtre.** Si le contingent réellement mis en vente sur
-le web est inférieur à la jauge physique (quota, places pro, jauge réduite), les
-« vendues » gonflent artificiellement. Indice à surveiller : les séances les plus
-lointaines n'ont jamais montré plus de ~104 places libres, ce qui suggère un
-contingent web bien inférieur à 300. Demandez le contingent par séance et
-inscrivez-le dans `capacityOverrides` — c'est le seul moyen d'avoir des chiffres
-exacts.
-
-Le collecteur signale dans ses logs, et le dashboard dans un bandeau, toute
-séance affichant **plus de places libres que sa jauge** : c'est le signe que la
-jauge est fausse.
 
 ### Autres limites connues
 
@@ -93,6 +120,7 @@ jauge est fausse.
 setup-github.sh      # crée le dépôt, pousse, configure Actions + Pages
 src/
   collect.ts         # le collecteur (Node 22 + TypeScript, via tsx)
+  model.ts           # reconstitution du plan, paliers, calcul des ventes
   types.ts           # schéma des données, commenté
 docs/                # racine du site publié
   index.html         # dashboard (tableau + Chart.js), aucun build
@@ -107,11 +135,14 @@ docs/                # racine du site publié
 
 ```jsonc
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "event":   { "slug": "…", "title": "…", "venue": "…", "url": "…" },
-  "capacityMode": "fixed",
-  "defaultCapacity": 300,                   // jauge appliquée par défaut
-  "capacityOverrides": {},                  // jauge par séance : { "158873": 280 }
+  "venueCapacity": 300,                     // jauge physique, indicative
+  "capacityOverrides": {},                  // jauge ouverte forcée : { "158873": 140 }
+  "plan": { "rows": [                       // catalogue reconstruit à chaque passage
+    { "zone": "ORCHESTRE", "row": "B", "order": 19,
+      "positions": ["1","2","…","13"], "size": 13, "settled": true }
+  ]},
   "sessions": [                             // dernier état connu des 14 séances
     { "id": "158873", "date": "2026-10-12", "hour": "19:00",
       "soldOut": false, "url": "https://…/reserver/…/158873" }
@@ -122,8 +153,11 @@ docs/                # racine du site publié
       "day": "2026-09-04",                  // clé de déduplication (1 par jour)
       "readings": [
         { "id": "158873", "date": "2026-10-12", "hour": "19:00",
-          "soldOut": false, "free": 31,
-          "byZone": { "ORCHESTRE": 18, "1er BALCON": 13 } }
+          "soldOut": false, "free": 29,
+          "byRow": { "ORCHESTRE/B": 2, "ORCHESTRE/C": 1, "1er BALCON/U": 8 },
+          // champs dérivés, recalculés à chaque passage
+          "openCapacity": 131, "sold": 102, "fillRate": 77.9,
+          "capacityIsLowerBound": true }
       ]
     }
   ]
@@ -268,8 +302,10 @@ Les messages sont explicites :
 - **Mobile** — sous 640 px, le tableau devient une liste de cartes : une par
   séance, groupées par soirée. Plus de défilement horizontal. Le rendu desktop
   est inchangé.
-- **Vue d'ensemble** — les 14 représentations : vendues / libres / jauge /
-  % de remplissage, avec sous-total par soirée (19h + 21h) et total sur la série.
+- **Vue d'ensemble** — les 14 représentations : vendues / libres / **places
+  ouvertes** / % de remplissage, plus un rappel discret de la jauge physique de
+  la salle, avec sous-total par soirée (19h + 21h) et total sur la série.
+  Le « ≥ » signale une jauge minorée (voir plus haut).
   Statut par séance : *Disponible*, *Quasi complet* (≥ 90 %), *Complet* (0 place),
   signalé par une icône **et** un libellé, jamais par la couleur seule.
 - **Évolution dans le temps** — courbes des places encore disponibles :

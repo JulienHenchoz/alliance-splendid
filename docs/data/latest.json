@@ -1,26 +1,288 @@
 {
-  "ts": "2026-09-04T18:56:40.602Z",
+  "ts": "2026-09-04T20:15:55.938Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
     "venue": "Théâtre du Splendid — 48 rue du Faubourg Saint-Martin, 75010 Paris",
     "url": "https://billetterie-lesplendid.tickandlive.com/evenement/les-doublages-improvises"
   },
-  "capacityMode": "observed_max",
+  "venueCapacity": 300,
+  "plan": {
+    "rows": [
+      {
+        "zone": "1er BALCON",
+        "row": "S",
+        "order": 289,
+        "positions": [
+          "2",
+          "4",
+          "6"
+        ],
+        "size": 3,
+        "settled": true
+      },
+      {
+        "zone": "1er BALCON",
+        "row": "R",
+        "order": 290,
+        "positions": [
+          "2",
+          "4",
+          "6"
+        ],
+        "size": 3,
+        "settled": true
+      },
+      {
+        "zone": "1er BALCON",
+        "row": "T",
+        "order": 298,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "14"
+        ],
+        "size": 13,
+        "settled": true
+      },
+      {
+        "zone": "1er BALCON",
+        "row": "U",
+        "order": 312,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "size": 14,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "B",
+        "order": 19,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "size": 13,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "C",
+        "order": 36,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "size": 14,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "D",
+        "order": 54,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "size": 13,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "E",
+        "order": 71,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "size": 14,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "H",
+        "order": 124,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13"
+        ],
+        "size": 13,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "I",
+        "order": 141,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ],
+        "size": 14,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "J",
+        "order": 159,
+        "positions": [
+          "6",
+          "8",
+          "10",
+          "11",
+          "12",
+          "12B",
+          "14",
+          "14B"
+        ],
+        "size": 8,
+        "settled": false
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "K",
+        "order": 181,
+        "positions": [
+          "4",
+          "10",
+          "12"
+        ],
+        "size": 3,
+        "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "N",
+        "order": 210,
+        "positions": [
+          "4",
+          "5",
+          "6",
+          "7",
+          "9",
+          "11"
+        ],
+        "size": 6,
+        "settled": true
+      }
+    ]
+  },
   "sessions": [
     {
       "id": "158873",
       "date": "2026-10-12",
       "hour": "19:00",
       "soldOut": false,
-      "free": 31,
-      "byZone": {
-        "ORCHESTRE": 18,
-        "1er BALCON": 13
+      "free": 29,
+      "byRow": {
+        "ORCHESTRE/B": 2,
+        "ORCHESTRE/C": 1,
+        "ORCHESTRE/D": 1,
+        "ORCHESTRE/E": 1,
+        "ORCHESTRE/J": 4,
+        "ORCHESTRE/K": 3,
+        "ORCHESTRE/N": 6,
+        "1er BALCON/S": 1,
+        "1er BALCON/R": 1,
+        "1er BALCON/T": 1,
+        "1er BALCON/U": 8
       },
-      "capacity": 31,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 131,
+      "sold": 102,
+      "fillRate": 77.9,
+      "capacityIsLowerBound": true
     },
     {
       "id": "158874",
@@ -28,13 +290,20 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 19,
-      "byZone": {
-        "ORCHESTRE": 11,
-        "1er BALCON": 8
+      "byRow": {
+        "ORCHESTRE/B": 2,
+        "ORCHESTRE/C": 2,
+        "ORCHESTRE/E": 1,
+        "ORCHESTRE/I": 2,
+        "ORCHESTRE/J": 4,
+        "1er BALCON/S": 1,
+        "1er BALCON/R": 1,
+        "1er BALCON/U": 6
       },
-      "capacity": 19,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 122,
+      "sold": 103,
+      "fillRate": 84.4,
+      "capacityIsLowerBound": true
     },
     {
       "id": "158871",
@@ -42,13 +311,20 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 40,
-      "byZone": {
-        "ORCHESTRE": 7,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/C": 1,
+        "ORCHESTRE/D": 1,
+        "ORCHESTRE/E": 2,
+        "ORCHESTRE/H": 3,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 40,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 100,
+      "sold": 60,
+      "fillRate": 60,
+      "capacityIsLowerBound": true
     },
     {
       "id": "158872",
@@ -56,13 +332,22 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 65,
-      "byZone": {
-        "ORCHESTRE": 36,
-        "1er BALCON": 29
+      "byRow": {
+        "ORCHESTRE/B": 2,
+        "ORCHESTRE/C": 4,
+        "ORCHESTRE/D": 5,
+        "ORCHESTRE/E": 4,
+        "ORCHESTRE/H": 9,
+        "ORCHESTRE/I": 12,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 1,
+        "1er BALCON/T": 11,
+        "1er BALCON/U": 14
       },
-      "capacity": 65,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 114,
+      "sold": 49,
+      "fillRate": 43,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158867",
@@ -70,13 +355,22 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 69,
-      "byZone": {
-        "ORCHESTRE": 47,
-        "1er BALCON": 22
+      "byRow": {
+        "ORCHESTRE/B": 7,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 2,
+        "ORCHESTRE/E": 2,
+        "ORCHESTRE/H": 8,
+        "ORCHESTRE/I": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 2,
+        "1er BALCON/U": 14
       },
-      "capacity": 69,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 114,
+      "sold": 45,
+      "fillRate": 39.5,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158868",
@@ -84,13 +378,22 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 85,
-      "byZone": {
-        "ORCHESTRE": 58,
-        "1er BALCON": 27
+      "byRow": {
+        "ORCHESTRE/B": 11,
+        "ORCHESTRE/C": 6,
+        "ORCHESTRE/D": 11,
+        "ORCHESTRE/E": 7,
+        "ORCHESTRE/H": 9,
+        "ORCHESTRE/I": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 7,
+        "1er BALCON/U": 14
       },
-      "capacity": 85,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 114,
+      "sold": 29,
+      "fillRate": 25.4,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158869",
@@ -98,13 +401,22 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 104,
-      "byZone": {
-        "ORCHESTRE": 71,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 7,
+        "ORCHESTRE/C": 12,
+        "ORCHESTRE/D": 11,
+        "ORCHESTRE/E": 14,
+        "ORCHESTRE/H": 13,
+        "ORCHESTRE/I": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 104,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 114,
+      "sold": 10,
+      "fillRate": 8.8,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158870",
@@ -112,13 +424,20 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 82,
-      "byZone": {
-        "ORCHESTRE": 49,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 11,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 11,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 82,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 87,
+      "sold": 5,
+      "fillRate": 5.7,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158861",
@@ -126,13 +445,20 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 68,
-      "byZone": {
-        "ORCHESTRE": 49,
-        "1er BALCON": 19
+      "byRow": {
+        "ORCHESTRE/B": 11,
+        "ORCHESTRE/C": 11,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 1,
+        "1er BALCON/U": 12
       },
-      "capacity": 68,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 87,
+      "sold": 19,
+      "fillRate": 21.8,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158862",
@@ -140,13 +466,20 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 81,
-      "byZone": {
-        "ORCHESTRE": 52,
-        "1er BALCON": 29
+      "byRow": {
+        "ORCHESTRE/B": 11,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 9,
+        "1er BALCON/U": 14
       },
-      "capacity": 81,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 87,
+      "sold": 6,
+      "fillRate": 6.9,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158865",
@@ -154,13 +487,20 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 84,
-      "byZone": {
-        "ORCHESTRE": 51,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 13,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 11,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 84,
-      "sold": 0,
-      "fillRate": 0
+      "openCapacity": 87,
+      "sold": 3,
+      "fillRate": 3.4,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158866",
@@ -168,13 +508,20 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 87,
-      "byZone": {
-        "ORCHESTRE": 54,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 13,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 87,
+      "openCapacity": 87,
       "sold": 0,
-      "fillRate": 0
+      "fillRate": 0,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158863",
@@ -182,13 +529,20 @@
       "hour": "19:00",
       "soldOut": false,
       "free": 87,
-      "byZone": {
-        "ORCHESTRE": 54,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 13,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 87,
+      "openCapacity": 87,
       "sold": 0,
-      "fillRate": 0
+      "fillRate": 0,
+      "capacityIsLowerBound": false
     },
     {
       "id": "158864",
@@ -196,18 +550,25 @@
       "hour": "21:00",
       "soldOut": false,
       "free": 87,
-      "byZone": {
-        "ORCHESTRE": 54,
-        "1er BALCON": 33
+      "byRow": {
+        "ORCHESTRE/B": 13,
+        "ORCHESTRE/C": 14,
+        "ORCHESTRE/D": 13,
+        "ORCHESTRE/E": 14,
+        "1er BALCON/S": 3,
+        "1er BALCON/R": 3,
+        "1er BALCON/T": 13,
+        "1er BALCON/U": 14
       },
-      "capacity": 87,
+      "openCapacity": 87,
       "sold": 0,
-      "fillRate": 0
+      "fillRate": 0,
+      "capacityIsLowerBound": false
     }
   ],
   "total": {
-    "capacity": 989,
-    "free": 989,
-    "sold": 0
+    "openCapacity": 1418,
+    "free": 987,
+    "sold": 431
   }
 }

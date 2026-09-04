@@ -19,6 +19,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { History, SessionMeta, SessionReading, Snapshot } from "./types.js";
+import { annotate, buildPlan, explain, rowKey } from "./model.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const HISTORY_PATH = resolve(ROOT, "docs/data/history.json");
@@ -32,19 +33,14 @@ const EVENT_URL = `${ORIGIN}/evenement/${SLUG}`;
 const EXPECTED_SESSIONS = 14;
 
 /**
- * Jauge par défaut d'une séance, en nombre de places.
+ * Jauge physique de la salle, à titre indicatif seulement.
  *
- * Cette valeur est SAISIE À LA MAIN : la billetterie ne publie jamais le total.
- * L'endpoint `zones` ne renvoie que les sièges achetables, le SVG du plan ne
- * dessine que ceux-là, et les sièges vendus n'apparaissent que comme des pixels
- * dans une image de fond identique pour les 14 séances — rien à en tirer de
- * fiable automatiquement.
- *
- * 300 = capacité annoncée du Théâtre du Splendid. Si le contingent réellement
- * mis en vente diffère, ou varie d'une séance à l'autre, renseignez
- * `capacityOverrides` dans docs/data/history.json plutôt que de changer ceci.
+ * Elle ne sert JAMAIS au calcul du taux de remplissage : le théâtre n'ouvre
+ * qu'une fraction des rangées à la vente (87 places au premier palier, sur
+ * ~300 dans la salle), et les rangées A, F, G, L, M, O, P ainsi que le 2e
+ * balcon ne sont ouvertes pour aucune séance de cette série. Voir model.ts.
  */
-const DEFAULT_CAPACITY = 300;
+const VENUE_CAPACITY = 300;
 /** Politesse : délai entre deux appels séance. */
 const DELAY_MS = 1_500;
 const TIMEOUT_MS = 20_000;
@@ -149,6 +145,10 @@ interface Area {
   av?: string;
   /** Zone d'implantation : "ORCHESTRE", "1er BALCON", … */
   ia?: string;
+  /** Désignation : `r` = rangée, `p` = numéro de place. */
+  da?: { r?: string | null; p?: string | null };
+  /** `phid` = index dense du siège dans le plan, ordonné par rangée. */
+  cust?: { phid?: string };
 }
 
 interface ZonesResponse {
@@ -162,7 +162,13 @@ interface ZonesResponse {
  * momentanément bloqué dans le panier d'un autre visiteur en disparaît, puis
  * réapparaît à l'expiration du panier — d'où de petites oscillations normales.
  */
-async function fetchAvailability(session: SessionMeta): Promise<SessionReading> {
+async function fetchAvailability(
+  session: SessionMeta,
+): Promise<{
+  reading: SessionReading;
+  order: Record<string, number>;
+  positions: Record<string, string[]>;
+}> {
   const url = `${ORIGIN}/map/0/${session.id}/zones`;
   const body = await fetchText(url, "application/json");
 
@@ -185,19 +191,35 @@ async function fetchAvailability(session: SessionMeta): Promise<SessionReading> 
   }
 
   const seats = Object.values(json.areas).filter((a) => a.seat === true && a.av === "1");
-  const byZone: Record<string, number> = {};
+
+  // Détail par rangée : c'est lui qui permet de distinguer « vendu » de
+  // « pas encore ouvert à la vente » (voir model.ts).
+  const byRow: Record<string, number> = {};
+  const order: Record<string, number> = {};
+  const positions: Record<string, string[]> = {};
   for (const seat of seats) {
-    const zone = seat.ia ?? "AUTRE";
-    byZone[zone] = (byZone[zone] ?? 0) + 1;
+    const key = rowKey(seat.ia ?? "AUTRE", seat.da?.r ?? "?");
+    byRow[key] = (byRow[key] ?? 0) + 1;
+    const pos = seat.da?.p;
+    if (pos) (positions[key] ??= []).push(String(pos));
+    const phid = Number(seat.cust?.phid);
+    if (Number.isFinite(phid)) {
+      const known = order[key];
+      order[key] = known === undefined ? phid : Math.min(known, phid);
+    }
   }
 
   return {
-    id: session.id,
-    date: session.date,
-    hour: session.hour,
-    soldOut: session.soldOut,
-    free: seats.length,
-    byZone,
+    reading: {
+      id: session.id,
+      date: session.date,
+      hour: session.hour,
+      soldOut: session.soldOut,
+      free: seats.length,
+      byRow,
+    },
+    order,
+    positions,
   };
 }
 
@@ -205,16 +227,16 @@ async function fetchAvailability(session: SessionMeta): Promise<SessionReading> 
 
 function emptyHistory(): History {
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     event: {
       slug: SLUG,
       title: "Les Doublages improvisés",
       venue: "Théâtre du Splendid — 48 rue du Faubourg Saint-Martin, 75010 Paris",
       url: EVENT_URL,
     },
-    capacityMode: "fixed",
-    defaultCapacity: DEFAULT_CAPACITY,
+    venueCapacity: VENUE_CAPACITY,
     capacityOverrides: {},
+    plan: { rows: [] },
     sessions: [],
     snapshots: [],
   };
@@ -222,26 +244,27 @@ function emptyHistory(): History {
 
 async function loadHistory(): Promise<History> {
   try {
-    // Le fichier sur disque peut être dans une version de schéma antérieure :
-    // on le lit en type « large » avant de le normaliser.
-    const parsed = JSON.parse(await readFile(HISTORY_PATH, "utf8")) as Omit<
-      History,
-      "schemaVersion" | "capacityMode"
-    > & { schemaVersion: number; capacityMode: string };
+    const parsed = JSON.parse(await readFile(HISTORY_PATH, "utf8")) as Partial<History> & {
+      schemaVersion: number;
+    };
 
-    if (parsed.schemaVersion === 1) {
-      // v1 déduisait la jauge du maximum de places libres observé, ce qui
-      // sous-estimait fortement les ventes. v2 utilise une jauge saisie.
-      log("Historique en schéma v1 — migration vers v2 (jauge saisie).");
-      parsed.schemaVersion = 2;
+    if (parsed.schemaVersion !== 3) {
+      // Les schémas 1 et 2 ne stockaient qu'un total par séance, sans détail
+      // par rangée : ils ne permettent pas de distinguer « vendu » de « pas
+      // encore ouvert ». Impossible de les convertir, on repart proprement.
+      log(
+        `Historique en schéma v${String(parsed.schemaVersion)} — sans détail par rangée, ` +
+          `donc inexploitable par le modèle actuel. Repart d'un historique neuf.`,
+      );
+      return emptyHistory();
     }
-    if (parsed.schemaVersion !== 2) {
-      throw new CollectError(`Version de schéma inattendue : ${String(parsed.schemaVersion)}`);
-    }
-    parsed.defaultCapacity ??= DEFAULT_CAPACITY;
+
+    parsed.venueCapacity ??= VENUE_CAPACITY;
     parsed.capacityOverrides ??= {};
+    parsed.plan ??= { rows: [] };
     parsed.snapshots ??= [];
-    return { ...parsed, schemaVersion: 2, capacityMode: "fixed" };
+    parsed.sessions ??= [];
+    return parsed as History;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") {
       log("Aucun historique existant — création d'un fichier neuf.");
@@ -251,37 +274,21 @@ async function loadHistory(): Promise<History> {
   }
 }
 
-/** Jauge retenue pour une séance : sa valeur propre si elle en a une, sinon la jauge par défaut. */
-function capacityFor(history: History, sessionId: string): number {
-  const override = history.capacityOverrides[sessionId];
-  if (typeof override === "number" && override > 0) return override;
-  return history.defaultCapacity;
-}
-
-/** Vue dérivée pratique pour un coup d'œil rapide / un futur usage tiers. */
+/** Vue dérivée du dernier relevé : pratique pour un coup d'œil ou un usage tiers. */
 function buildLatest(history: History) {
   const last = history.snapshots.at(-1);
   if (!last) return null;
-  const rows = last.readings.map((r) => {
-    const capacity = capacityFor(history, r.id);
-    const sold = Math.max(0, capacity - r.free);
-    return {
-      ...r,
-      capacity,
-      sold,
-      fillRate: capacity > 0 ? Math.round((sold / capacity) * 1000) / 10 : 0,
-    };
-  });
+  const rows = last.readings;
   return {
     ts: last.ts,
     event: history.event,
-    capacityMode: history.capacityMode,
-    defaultCapacity: history.defaultCapacity,
+    venueCapacity: history.venueCapacity,
+    plan: history.plan,
     sessions: rows,
     total: {
-      capacity: rows.reduce((s, r) => s + r.capacity, 0),
+      openCapacity: rows.reduce((s, r) => s + (r.openCapacity ?? 0), 0),
       free: rows.reduce((s, r) => s + r.free, 0),
-      sold: rows.reduce((s, r) => s + r.sold, 0),
+      sold: rows.reduce((s, r) => s + (r.sold ?? 0), 0),
     },
   };
 }
@@ -295,10 +302,19 @@ async function main(): Promise<void> {
   log(`${sessions.length} séances identifiées : ${sessions.map((s) => `${s.date} ${s.hour}`).join(", ")}`);
 
   const readings: SessionReading[] = [];
+  const observedOrder: Record<string, number> = {};
+  const observedPositions: Record<string, string[]> = {};
   for (const [i, session] of sessions.entries()) {
-    const reading = await fetchAvailability(session);
+    const { reading, order, positions } = await fetchAvailability(session);
     log(`  ${session.date} ${session.hour} (#${session.id}) → ${reading.free} place(s) libre(s)`);
     readings.push(reading);
+    for (const [key, phid] of Object.entries(order)) {
+      const known = observedOrder[key];
+      observedOrder[key] = known === undefined ? phid : Math.min(known, phid);
+    }
+    for (const [key, list] of Object.entries(positions)) {
+      (observedPositions[key] ??= []).push(...list);
+    }
     if (i < sessions.length - 1) await sleep(DELAY_MS);
   }
 
@@ -321,23 +337,44 @@ async function main(): Promise<void> {
   }
   history.snapshots.sort((a, b) => a.ts.localeCompare(b.ts));
 
-  // Garde-fou sur la jauge : plus de places libres que la jauge déclarée signifie
-  // que la jauge est fausse, pas que la mesure l'est. On le signale fort — les
-  // « vendues » et le taux de remplissage seraient sinon silencieusement faux.
-  const overCapacity = readings.filter((r) => r.free > capacityFor(history, r.id));
-  for (const r of overCapacity) {
+  // Le catalogue du plan puis TOUS les champs dérivés sont recalculés à chaque
+  // passage : quand un nouveau palier s'ouvre sur une séance peu vendue, on
+  // apprend la taille réelle de ses rangées et tout l'historique se corrige.
+  history.plan.rows = buildPlan(
+    history.snapshots,
+    observedOrder,
+    observedPositions,
+    history.plan.rows,
+  );
+  annotate(history);
+
+  log("");
+  log("Places ouvertes à la vente (rangées ouvertes, taille constatée) :");
+  for (const r of readings) {
+    const mark = r.capacityIsLowerBound ? "≥" : " ";
     log(
-      `  ⚠︎ ${r.date} ${r.hour} : ${r.free} places libres pour une jauge de ` +
-        `${capacityFor(history, r.id)}. Corrigez defaultCapacity ou capacityOverrides ` +
-        `dans docs/data/history.json.`,
+      `  ${r.date} ${r.hour} : ${String(r.sold).padStart(3)} vendues / ` +
+        `${String(r.free).padStart(3)} libres sur ${mark}${String(r.openCapacity).padStart(3)} ` +
+        `ouvertes (${r.fillRate}%)  ${explain(history, r)}`,
+    );
+  }
+
+  const unsettled = history.plan.rows.filter((r) => !r.settled);
+  if (unsettled.length) {
+    log("");
+    log(
+      "Rangées jamais vues entièrement libres — leur taille reste un plancher, " +
+        "d'où les jauges marquées « ≥ » : " +
+        unsettled.map((r) => `${r.zone}/${r.row}=${r.size}`).join(", "),
     );
   }
 
   const totalFree = readings.reduce((s, r) => s + r.free, 0);
-  const totalCapacity = readings.reduce((s, r) => s + capacityFor(history, r.id), 0);
+  const totalOpen = readings.reduce((s, r) => s + (r.openCapacity ?? 0), 0);
+  log("");
   log(
-    `Total : ${totalCapacity - totalFree} vendues / ${totalFree} libres ` +
-      `sur ${totalCapacity} places — ${history.snapshots.length} snapshot(s) en historique.`,
+    `Total : ${totalOpen - totalFree} vendues / ${totalFree} libres sur ${totalOpen} ` +
+      `places ouvertes — ${history.snapshots.length} snapshot(s) en historique.`,
   );
 
   if (DRY_RUN) {
