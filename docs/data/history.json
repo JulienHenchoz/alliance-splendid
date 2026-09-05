@@ -690,7 +690,7 @@
       ]
     },
     {
-      "ts": "2026-09-05T10:54:22.259Z",
+      "ts": "2026-09-05T15:21:27.045Z",
       "day": "2026-09-05",
       "readings": [
         {
@@ -724,12 +724,11 @@
           "date": "2026-10-12",
           "hour": "21:00",
           "soldOut": false,
-          "free": 17,
+          "free": 15,
           "byRow": {
             "ORCHESTRE/B": 2,
             "ORCHESTRE/C": 2,
             "ORCHESTRE/E": 1,
-            "ORCHESTRE/I": 2,
             "ORCHESTRE/J": 2,
             "1er BALCON/S": 1,
             "1er BALCON/R": 1,
@@ -737,8 +736,8 @@
           },
           "openCapacity": 122,
           "observedCapacity": 83,
-          "sold": 105,
-          "fillRate": 86.1,
+          "sold": 107,
+          "fillRate": 87.7,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées T, D, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 83 places."
         },
@@ -747,11 +746,10 @@
           "date": "2026-11-09",
           "hour": "19:00",
           "soldOut": false,
-          "free": 40,
+          "free": 38,
           "byRow": {
             "ORCHESTRE/C": 1,
             "ORCHESTRE/D": 1,
-            "ORCHESTRE/E": 2,
             "ORCHESTRE/H": 3,
             "1er BALCON/S": 3,
             "1er BALCON/R": 3,
@@ -760,8 +758,8 @@
           },
           "openCapacity": 100,
           "observedCapacity": 87,
-          "sold": 60,
-          "fillRate": 60,
+          "sold": 62,
+          "fillRate": 62,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangée B comptée ouverte mais jamais vue : vendue à 100 % ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 87 places."
         },
@@ -770,10 +768,10 @@
           "date": "2026-11-09",
           "hour": "21:00",
           "soldOut": false,
-          "free": 65,
+          "free": 63,
           "byRow": {
             "ORCHESTRE/B": 2,
-            "ORCHESTRE/C": 4,
+            "ORCHESTRE/C": 2,
             "ORCHESTRE/D": 5,
             "ORCHESTRE/E": 4,
             "ORCHESTRE/H": 9,
@@ -785,8 +783,8 @@
           },
           "openCapacity": 114,
           "observedCapacity": 114,
-          "sold": 49,
-          "fillRate": 43,
+          "sold": 51,
+          "fillRate": 44.7,
           "capacityIsEstimate": false
         },
         {
