@@ -254,7 +254,7 @@ Settings → Pages (typiquement `https://<org>.github.io/alliance-splendid/`).
 
 | Workflow | Déclencheur | Effet |
 |---|---|---|
-| Collecte quotidienne des ventes | `cron: 37 6 * * *` (UTC) + relance manuelle | Relève les 14 séances et committe le snapshot |
+| Collecte quotidienne des ventes | `cron: 37 6` et `23 12` (UTC) + relance manuelle | Relève les 14 séances et committe le snapshot |
 | Publier le dashboard | fin de la collecte, ou tout push touchant `docs/` | Reconstruit et publie le site |
 
 Trois points qui font échouer silencieusement ce genre de montage, et qui sont
@@ -269,10 +269,16 @@ traités ici :
    d'événement `push` : la publication est câblée sur `workflow_run` (fin de la
    collecte). Sans ça, les données seraient à jour dans le dépôt mais le site
    publié resterait figé sur le premier relevé.
-3. **Les planifications à la minute 0 sont les plus retardées** — GitHub met en
-   file d'attente et peut abandonner un créneau en période de pointe. D'où
-   `37 6 * * *` plutôt que `0 6 * * *`. Un décalage de quelques dizaines de
-   minutes reste normal et sans conséquence pour un relevé quotidien.
+3. **L'ordonnanceur de GitHub n'offre aucune garantie.** Les tâches planifiées
+   sont mises en file, retardées de plusieurs dizaines de minutes en période de
+   charge, et parfois purement abandonnées ; celles de la minute 0 subissent le
+   pic et sont les plus touchées. D'où deux précautions : des minutes
+   « quelconques » (`37 6` et non `0 6`), et **deux créneaux par jour**
+   (`37 6` puis `23 12` UTC). Le script étant idempotent — un snapshot par jour
+   UTC, remplacé et non empilé — le second passage ne coûte rien et rattrape un
+   créneau sauté. Un premier créneau planifié peut aussi mettre plusieurs
+   heures à être pris en compte après la création du dépôt : d'ici là,
+   `gh workflow run collect.yml` fait le travail.
 
 Rappel : GitHub **désactive** les workflows planifiés après 60 jours sans
 activité sur le dépôt. Le commit quotidien — y compris à vide — l'évite.

@@ -2,11 +2,15 @@ name: Collecte quotidienne des ventes
 
 on:
   schedule:
-    # 06:37 UTC ≈ 08:37 Paris (heure d'été) / 07:37 Paris (heure d'hiver).
-    # Minute volontairement décalée : GitHub met en file les tâches planifiées
-    # et celles de la minute 0 (le pic de charge) sont retardées, voire
-    # abandonnées. Une minute « quelconque » passe beaucoup plus fiablement.
-    - cron: "37 6 * * *"
+    # DEUX créneaux, à dessein. L'ordonnanceur de GitHub n'offre aucune
+    # garantie : il met les tâches planifiées en file, les retarde de plusieurs
+    # dizaines de minutes en période de charge, et peut purement en abandonner.
+    # Le script étant idempotent (un snapshot par jour UTC, remplacé et non
+    # empilé), un second passage ne coûte rien et rattrape un créneau sauté.
+    # Les minutes sont volontairement « quelconques » : celles de la minute 0
+    # subissent le pic de charge et sont les plus souvent retardées.
+    - cron: "37 6 * * *"   # 08:37 Paris (heure d'été) / 07:37 (hiver)
+    - cron: "23 12 * * *"  # 14:23 Paris — filet de rattrapage
   # Relance manuelle depuis l'onglet Actions.
   workflow_dispatch:
 
