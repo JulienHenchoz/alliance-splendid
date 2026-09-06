@@ -1,5 +1,5 @@
 {
-  "ts": "2026-09-05T15:21:27.045Z",
+  "ts": "2026-09-06T11:19:32.297Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
@@ -265,7 +265,7 @@
       "date": "2026-10-12",
       "hour": "19:00",
       "soldOut": false,
-      "free": 29,
+      "free": 27,
       "byRow": {
         "ORCHESTRE/B": 2,
         "ORCHESTRE/C": 1,
@@ -277,12 +277,12 @@
         "1er BALCON/S": 1,
         "1er BALCON/R": 1,
         "1er BALCON/T": 1,
-        "1er BALCON/U": 8
+        "1er BALCON/U": 6
       },
       "openCapacity": 131,
       "observedCapacity": 104,
-      "sold": 102,
-      "fillRate": 77.9,
+      "sold": 104,
+      "fillRate": 79.4,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangées H, I comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 104 places."
     },
@@ -291,7 +291,7 @@
       "date": "2026-10-12",
       "hour": "21:00",
       "soldOut": false,
-      "free": 15,
+      "free": 13,
       "byRow": {
         "ORCHESTRE/B": 2,
         "ORCHESTRE/C": 2,
@@ -299,12 +299,12 @@
         "ORCHESTRE/J": 2,
         "1er BALCON/S": 1,
         "1er BALCON/R": 1,
-        "1er BALCON/U": 6
+        "1er BALCON/U": 4
       },
       "openCapacity": 122,
       "observedCapacity": 83,
-      "sold": 107,
-      "fillRate": 87.7,
+      "sold": 109,
+      "fillRate": 89.3,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangées T, D, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 83 places."
     },
@@ -335,9 +335,9 @@
       "date": "2026-11-09",
       "hour": "21:00",
       "soldOut": false,
-      "free": 63,
+      "free": 62,
       "byRow": {
-        "ORCHESTRE/B": 2,
+        "ORCHESTRE/B": 1,
         "ORCHESTRE/C": 2,
         "ORCHESTRE/D": 5,
         "ORCHESTRE/E": 4,
@@ -350,8 +350,8 @@
       },
       "openCapacity": 114,
       "observedCapacity": 114,
-      "sold": 51,
-      "fillRate": 44.7,
+      "sold": 52,
+      "fillRate": 45.6,
       "capacityIsEstimate": false
     },
     {
@@ -583,7 +583,7 @@
   ],
   "total": {
     "openCapacity": 1418,
-    "free": 979,
-    "sold": 439
+    "free": 974,
+    "sold": 444
   }
 }

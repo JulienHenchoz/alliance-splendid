@@ -1014,6 +1014,332 @@
           "capacityIsEstimate": false
         }
       ]
+    },
+    {
+      "ts": "2026-09-06T11:19:32.297Z",
+      "day": "2026-09-06",
+      "readings": [
+        {
+          "id": "158873",
+          "date": "2026-10-12",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 27,
+          "byRow": {
+            "ORCHESTRE/B": 2,
+            "ORCHESTRE/C": 1,
+            "ORCHESTRE/D": 1,
+            "ORCHESTRE/E": 1,
+            "ORCHESTRE/J": 4,
+            "ORCHESTRE/K": 3,
+            "ORCHESTRE/N": 6,
+            "1er BALCON/S": 1,
+            "1er BALCON/R": 1,
+            "1er BALCON/T": 1,
+            "1er BALCON/U": 6
+          },
+          "openCapacity": 131,
+          "observedCapacity": 104,
+          "sold": 104,
+          "fillRate": 79.4,
+          "capacityIsEstimate": true,
+          "capacityNote": "Estimation. rangées H, I comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 104 places."
+        },
+        {
+          "id": "158874",
+          "date": "2026-10-12",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 13,
+          "byRow": {
+            "ORCHESTRE/B": 2,
+            "ORCHESTRE/C": 2,
+            "ORCHESTRE/E": 1,
+            "ORCHESTRE/J": 2,
+            "1er BALCON/S": 1,
+            "1er BALCON/R": 1,
+            "1er BALCON/U": 4
+          },
+          "openCapacity": 122,
+          "observedCapacity": 83,
+          "sold": 109,
+          "fillRate": 89.3,
+          "capacityIsEstimate": true,
+          "capacityNote": "Estimation. rangées T, D, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de J encore incertaine (jamais vue entièrement libre). Plancher garanti : 83 places."
+        },
+        {
+          "id": "158871",
+          "date": "2026-11-09",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 38,
+          "byRow": {
+            "ORCHESTRE/C": 1,
+            "ORCHESTRE/D": 1,
+            "ORCHESTRE/H": 3,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 100,
+          "observedCapacity": 87,
+          "sold": 62,
+          "fillRate": 62,
+          "capacityIsEstimate": true,
+          "capacityNote": "Estimation. rangée B comptée ouverte mais jamais vue : vendue à 100 % ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 87 places."
+        },
+        {
+          "id": "158872",
+          "date": "2026-11-09",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 62,
+          "byRow": {
+            "ORCHESTRE/B": 1,
+            "ORCHESTRE/C": 2,
+            "ORCHESTRE/D": 5,
+            "ORCHESTRE/E": 4,
+            "ORCHESTRE/H": 9,
+            "ORCHESTRE/I": 12,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 1,
+            "1er BALCON/T": 11,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 114,
+          "observedCapacity": 114,
+          "sold": 52,
+          "fillRate": 45.6,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158867",
+          "date": "2026-12-21",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 69,
+          "byRow": {
+            "ORCHESTRE/B": 7,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 2,
+            "ORCHESTRE/E": 2,
+            "ORCHESTRE/H": 8,
+            "ORCHESTRE/I": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 2,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 114,
+          "observedCapacity": 114,
+          "sold": 45,
+          "fillRate": 39.5,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158868",
+          "date": "2026-12-21",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 85,
+          "byRow": {
+            "ORCHESTRE/B": 11,
+            "ORCHESTRE/C": 6,
+            "ORCHESTRE/D": 11,
+            "ORCHESTRE/E": 7,
+            "ORCHESTRE/H": 9,
+            "ORCHESTRE/I": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 7,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 114,
+          "observedCapacity": 114,
+          "sold": 29,
+          "fillRate": 25.4,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158869",
+          "date": "2027-01-04",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 104,
+          "byRow": {
+            "ORCHESTRE/B": 7,
+            "ORCHESTRE/C": 12,
+            "ORCHESTRE/D": 11,
+            "ORCHESTRE/E": 14,
+            "ORCHESTRE/H": 13,
+            "ORCHESTRE/I": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 114,
+          "observedCapacity": 114,
+          "sold": 10,
+          "fillRate": 8.8,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158870",
+          "date": "2027-01-04",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 82,
+          "byRow": {
+            "ORCHESTRE/B": 11,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 11,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 5,
+          "fillRate": 5.7,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158861",
+          "date": "2027-02-22",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 68,
+          "byRow": {
+            "ORCHESTRE/B": 11,
+            "ORCHESTRE/C": 11,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 1,
+            "1er BALCON/U": 12
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 19,
+          "fillRate": 21.8,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158862",
+          "date": "2027-02-22",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 81,
+          "byRow": {
+            "ORCHESTRE/B": 11,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 9,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 6,
+          "fillRate": 6.9,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158865",
+          "date": "2027-03-29",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 84,
+          "byRow": {
+            "ORCHESTRE/B": 13,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 11,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 3,
+          "fillRate": 3.4,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158866",
+          "date": "2027-03-29",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 87,
+          "byRow": {
+            "ORCHESTRE/B": 13,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 0,
+          "fillRate": 0,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158863",
+          "date": "2027-04-26",
+          "hour": "19:00",
+          "soldOut": false,
+          "free": 87,
+          "byRow": {
+            "ORCHESTRE/B": 13,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 0,
+          "fillRate": 0,
+          "capacityIsEstimate": false
+        },
+        {
+          "id": "158864",
+          "date": "2027-04-26",
+          "hour": "21:00",
+          "soldOut": false,
+          "free": 87,
+          "byRow": {
+            "ORCHESTRE/B": 13,
+            "ORCHESTRE/C": 14,
+            "ORCHESTRE/D": 13,
+            "ORCHESTRE/E": 14,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
+            "1er BALCON/T": 13,
+            "1er BALCON/U": 14
+          },
+          "openCapacity": 87,
+          "observedCapacity": 87,
+          "sold": 0,
+          "fillRate": 0,
+          "capacityIsEstimate": false
+        }
+      ]
     }
   ]
 }
