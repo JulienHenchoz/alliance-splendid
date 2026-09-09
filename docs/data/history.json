@@ -2176,7 +2176,7 @@
       ]
     },
     {
-      "ts": "2026-09-09T11:49:15.972Z",
+      "ts": "2026-09-09T16:46:03.014Z",
       "day": "2026-09-09",
       "readings": [
         {
@@ -2184,12 +2184,12 @@
           "date": "2026-10-12",
           "hour": "19:00",
           "soldOut": false,
-          "free": 63,
+          "free": 62,
           "byRow": {
             "ORCHESTRE/B": 6,
             "ORCHESTRE/C": 5,
             "ORCHESTRE/D": 5,
-            "ORCHESTRE/E": 5,
+            "ORCHESTRE/E": 4,
             "ORCHESTRE/F": 4,
             "ORCHESTRE/G": 4,
             "ORCHESTRE/H": 3,
@@ -2205,8 +2205,8 @@
           },
           "openCapacity": 207,
           "observedCapacity": 197,
-          "sold": 144,
-          "fillRate": 69.6,
+          "sold": 145,
+          "fillRate": 70,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangée M comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 197 places."
         },
@@ -2215,9 +2215,9 @@
           "date": "2026-10-12",
           "hour": "21:00",
           "soldOut": false,
-          "free": 46,
+          "free": 45,
           "byRow": {
-            "ORCHESTRE/B": 2,
+            "ORCHESTRE/B": 1,
             "ORCHESTRE/C": 1,
             "ORCHESTRE/J": 4,
             "ORCHESTRE/K": 6,
@@ -2229,8 +2229,8 @@
           },
           "openCapacity": 201,
           "observedCapacity": 147,
-          "sold": 155,
-          "fillRate": 77.1,
+          "sold": 156,
+          "fillRate": 77.6,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées T, D, F, G, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, E, I, J, D, H encore incertaine (jamais vues entièrement libres). Plancher garanti : 147 places."
         },
