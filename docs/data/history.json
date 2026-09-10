@@ -2520,7 +2520,7 @@
       ]
     },
     {
-      "ts": "2026-09-10T11:47:11.298Z",
+      "ts": "2026-09-10T16:32:22.342Z",
       "day": "2026-09-10",
       "readings": [
         {
@@ -2559,7 +2559,7 @@
           "date": "2026-10-12",
           "hour": "21:00",
           "soldOut": false,
-          "free": 45,
+          "free": 43,
           "byRow": {
             "ORCHESTRE/B": 1,
             "ORCHESTRE/C": 1,
@@ -2567,14 +2567,14 @@
             "ORCHESTRE/K": 6,
             "ORCHESTRE/L": 13,
             "ORCHESTRE/M": 10,
-            "1er BALCON/S": 4,
-            "1er BALCON/R": 4,
+            "1er BALCON/S": 3,
+            "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
           "openCapacity": 201,
           "observedCapacity": 147,
-          "sold": 156,
-          "fillRate": 77.6,
+          "sold": 158,
+          "fillRate": 78.6,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées T, D, F, G, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, E, I, J, D, H encore incertaine (jamais vues entièrement libres). Plancher garanti : 147 places."
         },
@@ -2609,13 +2609,13 @@
           "date": "2026-11-09",
           "hour": "21:00",
           "soldOut": false,
-          "free": 50,
+          "free": 48,
           "byRow": {
             "ORCHESTRE/B": 1,
             "ORCHESTRE/D": 5,
             "ORCHESTRE/E": 4,
             "ORCHESTRE/H": 9,
-            "ORCHESTRE/I": 12,
+            "ORCHESTRE/I": 10,
             "1er BALCON/S": 3,
             "1er BALCON/R": 1,
             "1er BALCON/T": 4,
@@ -2623,8 +2623,8 @@
           },
           "openCapacity": 151,
           "observedCapacity": 143,
-          "sold": 101,
-          "fillRate": 66.9,
+          "sold": 103,
+          "fillRate": 68.2,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I encore incertaine (jamais vues entièrement libres). Plancher garanti : 143 places."
         },
