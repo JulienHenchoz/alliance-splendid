@@ -1,5 +1,5 @@
 {
-  "ts": "2026-09-09T16:46:03.014Z",
+  "ts": "2026-09-10T11:47:11.298Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
@@ -377,12 +377,12 @@
       "date": "2026-10-12",
       "hour": "19:00",
       "soldOut": false,
-      "free": 62,
+      "free": 61,
       "byRow": {
         "ORCHESTRE/B": 6,
         "ORCHESTRE/C": 5,
         "ORCHESTRE/D": 5,
-        "ORCHESTRE/E": 4,
+        "ORCHESTRE/E": 3,
         "ORCHESTRE/F": 4,
         "ORCHESTRE/G": 4,
         "ORCHESTRE/H": 3,
@@ -398,8 +398,8 @@
       },
       "openCapacity": 207,
       "observedCapacity": 197,
-      "sold": 145,
-      "fillRate": 70,
+      "sold": 146,
+      "fillRate": 70.5,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangée M comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 197 places."
     },
@@ -432,11 +432,11 @@
       "date": "2026-11-09",
       "hour": "19:00",
       "soldOut": false,
-      "free": 95,
+      "free": 93,
       "byRow": {
         "ORCHESTRE/C": 1,
         "ORCHESTRE/D": 1,
-        "ORCHESTRE/I": 12,
+        "ORCHESTRE/I": 10,
         "ORCHESTRE/J": 13,
         "ORCHESTRE/K": 12,
         "ORCHESTRE/L": 13,
@@ -448,8 +448,8 @@
       },
       "openCapacity": 201,
       "observedCapacity": 176,
-      "sold": 106,
-      "fillRate": 52.7,
+      "sold": 108,
+      "fillRate": 53.7,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangées B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres). Plancher garanti : 176 places."
     },
@@ -600,21 +600,19 @@
       "date": "2027-02-22",
       "hour": "21:00",
       "soldOut": false,
-      "free": 81,
+      "free": 69,
       "byRow": {
         "ORCHESTRE/B": 11,
         "ORCHESTRE/C": 14,
         "ORCHESTRE/D": 13,
         "ORCHESTRE/E": 14,
-        "1er BALCON/S": 3,
-        "1er BALCON/R": 3,
-        "1er BALCON/T": 9,
+        "1er BALCON/T": 3,
         "1er BALCON/U": 14
       },
       "openCapacity": 109,
       "observedCapacity": 109,
-      "sold": 28,
-      "fillRate": 25.7,
+      "sold": 40,
+      "fillRate": 36.7,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. taille de S, R, B, C, D, E encore incertaine (jamais vues entièrement libres). Plancher garanti : 109 places."
     },
@@ -713,7 +711,7 @@
   ],
   "total": {
     "openCapacity": 1976,
-    "free": 1072,
-    "sold": 904
+    "free": 1057,
+    "sold": 919
   }
 }
