@@ -1,5 +1,5 @@
 {
-  "ts": "2026-09-13T16:28:24.448Z",
+  "ts": "2026-09-14T13:18:58.432Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
@@ -431,7 +431,7 @@
       "date": "2026-11-09",
       "hour": "19:00",
       "soldOut": false,
-      "free": 91,
+      "free": 87,
       "byRow": {
         "ORCHESTRE/C": 1,
         "ORCHESTRE/D": 1,
@@ -442,13 +442,13 @@
         "ORCHESTRE/M": 10,
         "1er BALCON/S": 3,
         "1er BALCON/R": 3,
-        "1er BALCON/T": 13,
+        "1er BALCON/T": 9,
         "1er BALCON/U": 14
       },
       "openCapacity": 201,
       "observedCapacity": 176,
-      "sold": 110,
-      "fillRate": 54.7,
+      "sold": 114,
+      "fillRate": 56.7,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangées B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres). Plancher garanti : 176 places."
     },
@@ -710,7 +710,7 @@
   ],
   "total": {
     "openCapacity": 1976,
-    "free": 1044,
-    "sold": 932
+    "free": 1040,
+    "sold": 936
   }
 }
