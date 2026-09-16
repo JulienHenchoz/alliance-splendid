@@ -4567,7 +4567,7 @@
       ]
     },
     {
-      "ts": "2026-09-16T12:00:56.807Z",
+      "ts": "2026-09-16T17:08:28.234Z",
       "day": "2026-09-16",
       "readings": [
         {
@@ -4605,12 +4605,12 @@
           "date": "2026-10-12",
           "hour": "21:00",
           "soldOut": false,
-          "free": 42,
+          "free": 40,
           "byRow": {
             "ORCHESTRE/C": 1,
             "ORCHESTRE/J": 4,
             "ORCHESTRE/K": 6,
-            "ORCHESTRE/L": 13,
+            "ORCHESTRE/L": 11,
             "ORCHESTRE/M": 10,
             "1er BALCON/S": 3,
             "1er BALCON/R": 3,
@@ -4618,8 +4618,8 @@
           },
           "openCapacity": 201,
           "observedCapacity": 147,
-          "sold": 159,
-          "fillRate": 79.1,
+          "sold": 161,
+          "fillRate": 80.1,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées T, D, F, G, H comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, E, I, J, D, H encore incertaine (jamais vues entièrement libres). Plancher garanti : 147 places."
         },
@@ -4654,13 +4654,13 @@
           "date": "2026-11-09",
           "hour": "21:00",
           "soldOut": false,
-          "free": 40,
+          "free": 39,
           "byRow": {
             "ORCHESTRE/B": 1,
             "ORCHESTRE/D": 1,
             "ORCHESTRE/E": 2,
             "ORCHESTRE/H": 7,
-            "ORCHESTRE/I": 10,
+            "ORCHESTRE/I": 9,
             "1er BALCON/S": 3,
             "1er BALCON/R": 1,
             "1er BALCON/T": 4,
@@ -4668,8 +4668,8 @@
           },
           "openCapacity": 151,
           "observedCapacity": 143,
-          "sold": 111,
-          "fillRate": 73.5,
+          "sold": 112,
+          "fillRate": 74.2,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I encore incertaine (jamais vues entièrement libres). Plancher garanti : 143 places."
         },
@@ -4700,12 +4700,12 @@
           "date": "2026-12-21",
           "hour": "21:00",
           "soldOut": false,
-          "free": 83,
+          "free": 81,
           "byRow": {
             "ORCHESTRE/B": 11,
             "ORCHESTRE/C": 6,
             "ORCHESTRE/D": 11,
-            "ORCHESTRE/E": 7,
+            "ORCHESTRE/E": 5,
             "ORCHESTRE/H": 9,
             "ORCHESTRE/I": 14,
             "1er BALCON/S": 3,
@@ -4715,8 +4715,8 @@
           },
           "openCapacity": 151,
           "observedCapacity": 143,
-          "sold": 68,
-          "fillRate": 45,
+          "sold": 70,
+          "fillRate": 46.4,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I encore incertaine (jamais vues entièrement libres). Plancher garanti : 143 places."
         },
