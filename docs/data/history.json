@@ -8314,7 +8314,7 @@
       ]
     },
     {
-      "ts": "2026-09-27T12:25:06.253Z",
+      "ts": "2026-09-27T17:04:37.726Z",
       "day": "2026-09-27",
       "readings": [
         {
@@ -8322,7 +8322,7 @@
           "date": "2026-10-12",
           "hour": "19:00",
           "soldOut": false,
-          "free": 59,
+          "free": 50,
           "byRow": {
             "ORCHESTRE/B": 4,
             "ORCHESTRE/C": 5,
@@ -8334,18 +8334,17 @@
             "ORCHESTRE/I": 4,
             "ORCHESTRE/J": 2,
             "ORCHESTRE/L": 1,
-            "ORCHESTRE/M": 7,
-            "ORCHESTRE/N": 2,
+            "ORCHESTRE/M": 4,
+            "ORCHESTRE/N": 1,
             "1er BALCON/S": 4,
             "1er BALCON/R": 2,
-            "1er BALCON/T": 1,
             "1er BALCON/U": 2,
-            "1er BALCON/V": 11
+            "1er BALCON/V": 7
           },
           "openCapacity": 218,
           "observedCapacity": 218,
-          "sold": 159,
-          "fillRate": 72.9,
+          "sold": 168,
+          "fillRate": 77.1,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 218 places."
         },
@@ -8375,23 +8374,22 @@
           "date": "2026-11-09",
           "hour": "19:00",
           "soldOut": false,
-          "free": 71,
+          "free": 65,
           "byRow": {
             "ORCHESTRE/C": 1,
             "ORCHESTRE/D": 1,
-            "ORCHESTRE/J": 13,
+            "ORCHESTRE/J": 11,
             "ORCHESTRE/K": 10,
             "ORCHESTRE/L": 13,
             "ORCHESTRE/M": 10,
             "1er BALCON/S": 3,
-            "1er BALCON/R": 3,
             "1er BALCON/T": 3,
-            "1er BALCON/U": 14
+            "1er BALCON/U": 13
           },
           "openCapacity": 201,
           "observedCapacity": 176,
-          "sold": 130,
-          "fillRate": 64.7,
+          "sold": 136,
+          "fillRate": 67.7,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres). Plancher garanti : 176 places."
         },
