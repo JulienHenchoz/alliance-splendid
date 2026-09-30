@@ -9359,7 +9359,7 @@
       ]
     },
     {
-      "ts": "2026-09-30T12:59:05.810Z",
+      "ts": "2026-09-30T18:02:26.583Z",
       "day": "2026-09-30",
       "readings": [
         {
@@ -9367,20 +9367,19 @@
           "date": "2026-10-12",
           "hour": "19:00",
           "soldOut": false,
-          "free": 60,
+          "free": 59,
           "byRow": {
             "ORCHESTRE/A": 6,
             "ORCHESTRE/B": 3,
             "ORCHESTRE/C": 4,
             "ORCHESTRE/D": 1,
             "ORCHESTRE/E": 2,
-            "ORCHESTRE/F": 2,
             "ORCHESTRE/G": 4,
             "ORCHESTRE/H": 3,
             "ORCHESTRE/I": 4,
             "ORCHESTRE/J": 2,
             "ORCHESTRE/L": 1,
-            "ORCHESTRE/M": 2,
+            "ORCHESTRE/M": 3,
             "ORCHESTRE/N": 1,
             "1er BALCON/S": 4,
             "1er BALCON/R": 2,
@@ -9390,8 +9389,8 @@
           },
           "openCapacity": 236,
           "observedCapacity": 236,
-          "sold": 176,
-          "fillRate": 74.6,
+          "sold": 177,
+          "fillRate": 75,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 236 places."
         },
