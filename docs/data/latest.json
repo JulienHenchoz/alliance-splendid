@@ -1,5 +1,5 @@
 {
-  "ts": "2026-09-29T18:08:55.570Z",
+  "ts": "2026-09-30T12:59:05.810Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
@@ -433,12 +433,12 @@
       "date": "2026-10-12",
       "hour": "19:00",
       "soldOut": false,
-      "free": 64,
+      "free": 60,
       "byRow": {
         "ORCHESTRE/A": 6,
-        "ORCHESTRE/B": 4,
+        "ORCHESTRE/B": 3,
         "ORCHESTRE/C": 4,
-        "ORCHESTRE/D": 3,
+        "ORCHESTRE/D": 1,
         "ORCHESTRE/E": 2,
         "ORCHESTRE/F": 2,
         "ORCHESTRE/G": 4,
@@ -446,7 +446,7 @@
         "ORCHESTRE/I": 4,
         "ORCHESTRE/J": 2,
         "ORCHESTRE/L": 1,
-        "ORCHESTRE/M": 3,
+        "ORCHESTRE/M": 2,
         "ORCHESTRE/N": 1,
         "1er BALCON/S": 4,
         "1er BALCON/R": 2,
@@ -456,8 +456,8 @@
       },
       "openCapacity": 236,
       "observedCapacity": 236,
-      "sold": 172,
-      "fillRate": 72.9,
+      "sold": 176,
+      "fillRate": 74.6,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 236 places."
     },
@@ -511,11 +511,11 @@
       "date": "2026-11-09",
       "hour": "21:00",
       "soldOut": false,
-      "free": 19,
+      "free": 14,
       "byRow": {
         "ORCHESTRE/D": 1,
-        "ORCHESTRE/H": 5,
-        "ORCHESTRE/I": 5,
+        "ORCHESTRE/H": 2,
+        "ORCHESTRE/I": 3,
         "1er BALCON/S": 3,
         "1er BALCON/R": 1,
         "1er BALCON/T": 1,
@@ -523,8 +523,8 @@
       },
       "openCapacity": 157,
       "observedCapacity": 143,
-      "sold": 138,
-      "fillRate": 87.9,
+      "sold": 143,
+      "fillRate": 91.1,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. rangées A, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I encore incertaine (jamais vues entièrement libres). Plancher garanti : 143 places."
     },
@@ -762,7 +762,7 @@
   ],
   "total": {
     "openCapacity": 2083,
-    "free": 914,
-    "sold": 1169
+    "free": 905,
+    "sold": 1178
   }
 }
