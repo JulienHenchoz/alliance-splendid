@@ -438,6 +438,20 @@
         ],
         "size": 6,
         "settled": true
+      },
+      {
+        "zone": "ORCHESTRE",
+        "row": "P",
+        "order": 232,
+        "positions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "size": 5,
+        "settled": true
       }
     ]
   },
@@ -565,12 +579,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 8
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 220,
-          "fillRate": 88.4,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 225,
+          "fillRate": 88.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -588,12 +602,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 212,
-          "fillRate": 91.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 224,
+          "fillRate": 92.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -611,12 +625,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 178,
-          "fillRate": 81.7,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 191,
+          "fillRate": 82.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -904,12 +918,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 8
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 220,
-          "fillRate": 88.4,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 225,
+          "fillRate": 88.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -926,12 +940,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 216,
-          "fillRate": 93.5,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 228,
+          "fillRate": 93.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -948,12 +962,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 180,
-          "fillRate": 82.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 193,
+          "fillRate": 83.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -1241,12 +1255,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 222,
-          "fillRate": 89.2,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 227,
+          "fillRate": 89.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -1263,12 +1277,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 4
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 218,
-          "fillRate": 94.4,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 230,
+          "fillRate": 94.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -1285,12 +1299,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 180,
-          "fillRate": 82.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 193,
+          "fillRate": 83.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -1583,12 +1597,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 180,
-          "fillRate": 72.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 185,
+          "fillRate": 72.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -1607,12 +1621,12 @@
             "1er BALCON/R": 4,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 179,
-          "fillRate": 77.5,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 191,
+          "fillRate": 78.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -1634,12 +1648,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 120,
-          "fillRate": 55,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 133,
+          "fillRate": 57.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -1928,12 +1942,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 184,
-          "fillRate": 73.9,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 189,
+          "fillRate": 74.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -1952,12 +1966,12 @@
             "1er BALCON/R": 4,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 185,
-          "fillRate": 80.1,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 197,
+          "fillRate": 81.1,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -1978,12 +1992,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 123,
-          "fillRate": 56.4,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 136,
+          "fillRate": 58.9,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -2272,12 +2286,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 187,
-          "fillRate": 75.1,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 192,
+          "fillRate": 75.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -2296,12 +2310,12 @@
             "1er BALCON/R": 4,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 186,
-          "fillRate": 80.5,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 198,
+          "fillRate": 81.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -2322,12 +2336,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 123,
-          "fillRate": 56.4,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 136,
+          "fillRate": 58.9,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -2616,12 +2630,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 188,
-          "fillRate": 75.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 193,
+          "fillRate": 76,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -2640,12 +2654,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 188,
-          "fillRate": 81.4,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 200,
+          "fillRate": 82.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -2666,12 +2680,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 125,
-          "fillRate": 57.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 138,
+          "fillRate": 59.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -2958,12 +2972,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 188,
-          "fillRate": 75.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 193,
+          "fillRate": 76,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -2982,12 +2996,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 188,
-          "fillRate": 81.4,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 200,
+          "fillRate": 82.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -3008,12 +3022,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 125,
-          "fillRate": 57.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 138,
+          "fillRate": 59.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -3300,12 +3314,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 190,
-          "fillRate": 76.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 195,
+          "fillRate": 76.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -3323,12 +3337,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 189,
-          "fillRate": 81.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 201,
+          "fillRate": 82.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -3349,12 +3363,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 127,
-          "fillRate": 58.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 140,
+          "fillRate": 60.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -3641,12 +3655,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 191,
-          "fillRate": 76.7,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 196,
+          "fillRate": 77.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -3664,12 +3678,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 189,
-          "fillRate": 81.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 201,
+          "fillRate": 82.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -3690,12 +3704,12 @@
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 127,
-          "fillRate": 58.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 140,
+          "fillRate": 60.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -3982,12 +3996,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 191,
-          "fillRate": 76.7,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 196,
+          "fillRate": 77.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -4005,12 +4019,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 189,
-          "fillRate": 81.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 201,
+          "fillRate": 82.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -4031,12 +4045,12 @@
             "1er BALCON/T": 9,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 131,
-          "fillRate": 60.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 144,
+          "fillRate": 62.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -4322,12 +4336,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 195,
-          "fillRate": 78.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 200,
+          "fillRate": 78.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -4345,12 +4359,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 189,
-          "fillRate": 81.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 201,
+          "fillRate": 82.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -4371,12 +4385,12 @@
             "1er BALCON/T": 9,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 131,
-          "fillRate": 60.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 144,
+          "fillRate": 62.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -4662,12 +4676,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 195,
-          "fillRate": 78.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 200,
+          "fillRate": 78.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -4685,12 +4699,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 191,
-          "fillRate": 82.7,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 203,
+          "fillRate": 83.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -4711,12 +4725,12 @@
             "1er BALCON/T": 9,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 131,
-          "fillRate": 60.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 144,
+          "fillRate": 62.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -5002,12 +5016,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 6
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 195,
-          "fillRate": 78.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 200,
+          "fillRate": 78.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -5025,12 +5039,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 191,
-          "fillRate": 82.7,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 203,
+          "fillRate": 83.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -5051,12 +5065,12 @@
             "1er BALCON/T": 9,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 131,
-          "fillRate": 60.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 144,
+          "fillRate": 62.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -5342,12 +5356,12 @@
             "1er BALCON/T": 1,
             "1er BALCON/U": 4
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 199,
-          "fillRate": 79.9,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 204,
+          "fillRate": 80.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -5365,12 +5379,12 @@
             "1er BALCON/R": 3,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 191,
-          "fillRate": 82.7,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 203,
+          "fillRate": 83.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -5391,12 +5405,12 @@
             "1er BALCON/T": 8,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 132,
-          "fillRate": 60.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 145,
+          "fillRate": 62.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -5683,12 +5697,12 @@
             "1er BALCON/U": 4,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 183,
-          "fillRate": 73.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 188,
+          "fillRate": 74,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -5706,12 +5720,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 193,
-          "fillRate": 83.5,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 205,
+          "fillRate": 84.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -5732,12 +5746,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 138,
-          "fillRate": 63.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 151,
+          "fillRate": 65.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -6023,12 +6037,12 @@
             "1er BALCON/U": 4,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 183,
-          "fillRate": 73.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 188,
+          "fillRate": 74,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -6045,12 +6059,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 194,
-          "fillRate": 84,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 206,
+          "fillRate": 84.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -6071,12 +6085,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 138,
-          "fillRate": 63.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 151,
+          "fillRate": 65.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -6362,12 +6376,12 @@
             "1er BALCON/U": 4,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 183,
-          "fillRate": 73.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 188,
+          "fillRate": 74,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -6384,12 +6398,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 194,
-          "fillRate": 84,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 206,
+          "fillRate": 84.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -6410,12 +6424,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 140,
-          "fillRate": 64.2,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 153,
+          "fillRate": 66.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -6701,12 +6715,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 185,
-          "fillRate": 74.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 190,
+          "fillRate": 74.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -6723,12 +6737,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 200,
-          "fillRate": 86.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 212,
+          "fillRate": 87.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -6749,12 +6763,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 142,
-          "fillRate": 65.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 155,
+          "fillRate": 67.1,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -7040,12 +7054,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 187,
-          "fillRate": 75.1,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 192,
+          "fillRate": 75.6,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -7062,12 +7076,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 200,
-          "fillRate": 86.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 212,
+          "fillRate": 87.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -7088,12 +7102,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 142,
-          "fillRate": 65.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 155,
+          "fillRate": 67.1,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -7379,12 +7393,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 191,
-          "fillRate": 76.7,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 196,
+          "fillRate": 77.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -7401,12 +7415,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 207,
-          "fillRate": 89.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 219,
+          "fillRate": 90.1,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -7426,12 +7440,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 144,
-          "fillRate": 66.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 157,
+          "fillRate": 68,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -7717,12 +7731,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 190,
-          "fillRate": 76.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 195,
+          "fillRate": 76.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -7738,12 +7752,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 210,
-          "fillRate": 90.9,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 222,
+          "fillRate": 91.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -7763,12 +7777,12 @@
             "1er BALCON/T": 6,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 144,
-          "fillRate": 66.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 157,
+          "fillRate": 68,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -8054,12 +8068,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 11
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 190,
-          "fillRate": 76.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 195,
+          "fillRate": 76.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -8075,12 +8089,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 210,
-          "fillRate": 90.9,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 222,
+          "fillRate": 91.4,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -8100,12 +8114,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 147,
-          "fillRate": 67.4,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 160,
+          "fillRate": 69.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -8390,12 +8404,12 @@
             "1er BALCON/U": 2,
             "1er BALCON/V": 7
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 199,
-          "fillRate": 79.9,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 204,
+          "fillRate": 80.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -8411,12 +8425,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 212,
-          "fillRate": 91.8,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 224,
+          "fillRate": 92.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -8435,12 +8449,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 13
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 153,
-          "fillRate": 70.2,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 166,
+          "fillRate": 71.9,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -8727,12 +8741,12 @@
             "1er BALCON/V": 7,
             "1er BALCON/W": 12
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 181,
-          "fillRate": 72.7,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 186,
+          "fillRate": 73.2,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -8748,12 +8762,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 214,
-          "fillRate": 92.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 226,
+          "fillRate": 93,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -8772,12 +8786,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 154,
-          "fillRate": 70.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 167,
+          "fillRate": 72.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -9064,12 +9078,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 12
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 185,
-          "fillRate": 74.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 190,
+          "fillRate": 74.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -9085,12 +9099,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 214,
-          "fillRate": 92.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 226,
+          "fillRate": 93,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -9109,12 +9123,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 154,
-          "fillRate": 70.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 167,
+          "fillRate": 72.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -9400,12 +9414,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 12
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 190,
-          "fillRate": 76.3,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 195,
+          "fillRate": 76.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -9421,12 +9435,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 214,
-          "fillRate": 92.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 226,
+          "fillRate": 93,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -9445,12 +9459,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 154,
-          "fillRate": 70.6,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 167,
+          "fillRate": 72.3,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -9735,12 +9749,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 12
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 193,
-          "fillRate": 77.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 198,
+          "fillRate": 78,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -9756,12 +9770,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/U": 2
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 214,
-          "fillRate": 92.6,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 226,
+          "fillRate": 93,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -9780,12 +9794,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 159,
-          "fillRate": 72.9,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 172,
+          "fillRate": 74.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -10069,12 +10083,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 10
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 202,
-          "fillRate": 81.1,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 207,
+          "fillRate": 81.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -10097,12 +10111,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/V": 13
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 167,
-          "fillRate": 72.3,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 179,
+          "fillRate": 73.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -10121,12 +10135,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 162,
-          "fillRate": 74.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 175,
+          "fillRate": 75.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -10417,12 +10431,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 10
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 208,
-          "fillRate": 83.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 213,
+          "fillRate": 83.9,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -10445,12 +10459,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/V": 13
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 167,
-          "fillRate": 72.3,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 179,
+          "fillRate": 73.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -10469,12 +10483,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 162,
-          "fillRate": 74.3,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 175,
+          "fillRate": 75.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -10765,12 +10779,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 10
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 211,
-          "fillRate": 84.7,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 216,
+          "fillRate": 85,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -10793,12 +10807,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/V": 13
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 169,
-          "fillRate": 73.2,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 181,
+          "fillRate": 74.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -10817,12 +10831,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 166,
-          "fillRate": 76.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 179,
+          "fillRate": 77.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -11113,12 +11127,12 @@
             "1er BALCON/V": 5,
             "1er BALCON/W": 10
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
-          "sold": 213,
-          "fillRate": 85.5,
+          "openCapacity": 254,
+          "observedCapacity": 254,
+          "sold": 218,
+          "fillRate": 85.8,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
@@ -11141,12 +11155,12 @@
             "1er BALCON/R": 1,
             "1er BALCON/V": 13
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 169,
-          "fillRate": 73.2,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 181,
+          "fillRate": 74.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
@@ -11165,12 +11179,12 @@
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 166,
-          "fillRate": 76.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 179,
+          "fillRate": 77.5,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -11437,7 +11451,7 @@
       ]
     },
     {
-      "ts": "2026-10-06T13:35:15.885Z",
+      "ts": "2026-10-06T18:29:39.144Z",
       "day": "2026-10-06",
       "readings": [
         {
@@ -11445,7 +11459,7 @@
           "date": "2026-10-12",
           "hour": "19:00",
           "soldOut": false,
-          "free": 33,
+          "free": 38,
           "byRow": {
             "ORCHESTRE/A": 4,
             "ORCHESTRE/B": 2,
@@ -11456,28 +11470,29 @@
             "ORCHESTRE/I": 2,
             "ORCHESTRE/J": 2,
             "ORCHESTRE/N": 1,
+            "ORCHESTRE/P": 5,
             "1er BALCON/S": 2,
             "1er BALCON/R": 1,
             "1er BALCON/V": 5,
             "1er BALCON/W": 8
           },
-          "openCapacity": 249,
-          "observedCapacity": 249,
+          "openCapacity": 254,
+          "observedCapacity": 254,
           "sold": 216,
-          "fillRate": 86.7,
+          "fillRate": 85,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 249 places."
+          "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 254 places."
         },
         {
           "id": "158874",
           "date": "2026-10-12",
           "hour": "21:00",
           "soldOut": false,
-          "free": 62,
+          "free": 75,
           "byRow": {
             "ORCHESTRE/A": 14,
             "ORCHESTRE/B": 4,
-            "ORCHESTRE/C": 2,
+            "ORCHESTRE/C": 3,
             "ORCHESTRE/D": 2,
             "ORCHESTRE/E": 4,
             "ORCHESTRE/H": 4,
@@ -11487,38 +11502,46 @@
             "ORCHESTRE/M": 7,
             "1er BALCON/S": 1,
             "1er BALCON/R": 1,
-            "1er BALCON/V": 13
+            "1er BALCON/V": 13,
+            "1er BALCON/W": 12
           },
-          "openCapacity": 231,
-          "observedCapacity": 210,
-          "sold": 169,
-          "fillRate": 73.2,
+          "openCapacity": 243,
+          "observedCapacity": 222,
+          "sold": 168,
+          "fillRate": 69.1,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 210 places."
+          "capacityNote": "Estimation. rangées T, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 222 places."
         },
         {
           "id": "158871",
           "date": "2026-11-09",
           "hour": "19:00",
           "soldOut": false,
-          "free": 52,
+          "free": 93,
           "byRow": {
-            "ORCHESTRE/C": 1,
-            "ORCHESTRE/D": 1,
+            "ORCHESTRE/B": 4,
+            "ORCHESTRE/C": 5,
+            "ORCHESTRE/D": 5,
+            "ORCHESTRE/E": 4,
+            "ORCHESTRE/F": 2,
+            "ORCHESTRE/G": 4,
+            "ORCHESTRE/H": 4,
+            "ORCHESTRE/I": 2,
             "ORCHESTRE/J": 1,
             "ORCHESTRE/K": 8,
             "ORCHESTRE/L": 11,
             "ORCHESTRE/M": 10,
             "1er BALCON/S": 3,
             "1er BALCON/T": 3,
-            "1er BALCON/U": 14
+            "1er BALCON/U": 14,
+            "1er BALCON/V": 13
           },
-          "openCapacity": 218,
-          "observedCapacity": 177,
-          "sold": 166,
-          "fillRate": 76.1,
+          "openCapacity": 231,
+          "observedCapacity": 215,
+          "sold": 138,
+          "fillRate": 59.7,
           "capacityIsEstimate": true,
-          "capacityNote": "Estimation. rangées A, B, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, C, D, E, H, I, J, B encore incertaine (jamais vues entièrement libres) ; palier moins profond que celui d'une séance plus lointaine. Plancher garanti : 177 places."
+          "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 215 places."
         },
         {
           "id": "158872",
@@ -11555,12 +11578,12 @@
           "date": "2026-12-21",
           "hour": "19:00",
           "soldOut": false,
-          "free": 43,
+          "free": 41,
           "byRow": {
             "ORCHESTRE/B": 2,
             "ORCHESTRE/C": 2,
             "ORCHESTRE/H": 3,
-            "ORCHESTRE/I": 10,
+            "ORCHESTRE/I": 8,
             "ORCHESTRE/J": 8,
             "1er BALCON/S": 3,
             "1er BALCON/R": 1,
@@ -11568,8 +11591,8 @@
           },
           "openCapacity": 183,
           "observedCapacity": 159,
-          "sold": 140,
-          "fillRate": 76.5,
+          "sold": 142,
+          "fillRate": 77.6,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées A, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 159 places."
         },
@@ -11603,7 +11626,7 @@
           "date": "2027-01-04",
           "hour": "19:00",
           "soldOut": false,
-          "free": 93,
+          "free": 91,
           "byRow": {
             "ORCHESTRE/B": 5,
             "ORCHESTRE/C": 12,
@@ -11612,14 +11635,14 @@
             "ORCHESTRE/H": 6,
             "ORCHESTRE/I": 12,
             "1er BALCON/S": 3,
-            "1er BALCON/R": 3,
+            "1er BALCON/R": 1,
             "1er BALCON/T": 13,
             "1er BALCON/U": 14
           },
           "openCapacity": 168,
           "observedCapacity": 144,
-          "sold": 75,
-          "fillRate": 44.6,
+          "sold": 77,
+          "fillRate": 45.8,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangées A, F, G comptées ouvertes mais jamais vues : vendues à 100 % ; taille de S, R, B, C, D, E, H, I encore incertaine (jamais vues entièrement libres). Plancher garanti : 144 places."
         },
@@ -11674,19 +11697,19 @@
           "date": "2027-02-22",
           "hour": "21:00",
           "soldOut": false,
-          "free": 67,
+          "free": 65,
           "byRow": {
             "ORCHESTRE/B": 11,
             "ORCHESTRE/C": 14,
             "ORCHESTRE/D": 11,
-            "ORCHESTRE/E": 14,
+            "ORCHESTRE/E": 12,
             "1er BALCON/T": 3,
             "1er BALCON/U": 14
           },
           "openCapacity": 125,
           "observedCapacity": 109,
-          "sold": 58,
-          "fillRate": 46.4,
+          "sold": 60,
+          "fillRate": 48,
           "capacityIsEstimate": true,
           "capacityNote": "Estimation. rangée A comptée ouverte mais jamais vue : vendue à 100 % ; taille de S, R, B, C, D, E encore incertaine (jamais vues entièrement libres). Plancher garanti : 109 places."
         },
