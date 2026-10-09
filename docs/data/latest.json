@@ -1,5 +1,5 @@
 {
-  "ts": "2026-10-09T13:43:13.523Z",
+  "ts": "2026-10-09T18:26:06.778Z",
   "event": {
     "slug": "les-doublages-improvises",
     "title": "Les Doublages improvisés",
@@ -474,9 +474,9 @@
       "date": "2026-10-12",
       "hour": "19:00",
       "soldOut": false,
-      "free": 60,
+      "free": 61,
       "byRow": {
-        "ORCHESTRE/A": 3,
+        "ORCHESTRE/A": 4,
         "ORCHESTRE/B": 2,
         "ORCHESTRE/C": 2,
         "ORCHESTRE/D": 1,
@@ -493,8 +493,8 @@
       },
       "openCapacity": 268,
       "observedCapacity": 268,
-      "sold": 208,
-      "fillRate": 77.6,
+      "sold": 207,
+      "fillRate": 77.2,
       "capacityIsEstimate": true,
       "capacityNote": "Estimation. taille de S, R, B, C, D, E, H, I, J encore incertaine (jamais vues entièrement libres). Plancher garanti : 268 places."
     },
@@ -824,7 +824,7 @@
   ],
   "total": {
     "openCapacity": 2441,
-    "free": 1026,
-    "sold": 1415
+    "free": 1027,
+    "sold": 1414
   }
 }
